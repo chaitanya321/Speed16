@@ -353,11 +353,37 @@ footer{text-align:center;padding:30px;color:#666}
 </div>
 <footer>© 2026 Speed16 AI Academy</footer>
 <script>
-document.querySelectorAll('.accordion-header').forEach(h=>h.onclick=()=>{
-let a=h.parentElement,c=a.querySelector('.accordion-content');
-document.querySelectorAll('.accordion').forEach(x=>{if(x!==a){x.classList.remove('active');x.querySelector('.accordion-content').style.maxHeight=null;}});
-a.classList.toggle('active');
-c.style.maxHeight=c.style.maxHeight?null:c.scrollHeight+'px';
+document.querySelectorAll('.accordion-header').forEach(h => {
+    h.onclick = () => {
+
+        let a = h.parentElement;
+        let c = a.querySelector('.accordion-content');
+
+        // Close other accordions
+        document.querySelectorAll('.accordion').forEach(x => {
+            if (x !== a) {
+                x.classList.remove('active');
+                x.querySelector('.accordion-content').style.maxHeight = null;
+            }
+        });
+
+        // Toggle current accordion
+        a.classList.toggle('active');
+
+        if (c.style.maxHeight) {
+            c.style.maxHeight = null;
+        } else {
+            c.style.maxHeight = c.scrollHeight + "px";
+
+            // Keep the clicked accordion at the top
+            setTimeout(() => {
+                h.scrollIntoView({
+                    behavior: "smooth",
+                    block: "start"
+                });
+            }, 100);
+        }
+    };
 });
 </script>
 </body></html>
