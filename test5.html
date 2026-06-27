@@ -1,0 +1,1389 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Speed16 AI Academy | Python, AI, Java, Robotics, Vedic Maths, APCSP, APCSA, AWS, DevOps, PowerBI, Data Science</title>
+<meta name="description" content="Speed16 AI Academy – Learn Python, AI, AWS, Java & Robotics with Live Training by Prof. Chaitanya Patil. 2000+ Students | 12+ Years Experience | NRI & India Batches.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+/* ─── TOKENS ─────────────────────────────────────────────── */
+:root {
+  --bg-a: #B7C3ED;
+  --bg-b: #B2EBCD;
+  --surface: #FFFFFF;
+  --surface-2: #F1F5FF;
+  --accent: #1E3A8A;
+  --accent-2: #2563EB;
+  --accent-glow: rgba(37,99,235,0.15);
+  --cyan-glow: rgba(30,58,138,0.10);
+  --text-primary: #0F172A;
+  --text-secondary: #475569;
+  --text-muted: #94A3B8;
+  --border: rgba(37,99,235,0.15);
+  --border-hover: rgba(37,99,235,0.45);
+  --radius: 14px;
+  --radius-sm: 8px;
+  --radius-lg: 20px;
+  --font-display: 'Space Grotesk', sans-serif;
+  --font-body: 'Inter', sans-serif;
+  --transition: 0.3s cubic-bezier(0.4,0,0.2,1);
+}
+
+/* ─── RESET & BASE ───────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: var(--font-body);
+  background: var(--bg-a);
+  color: var(--text-primary);
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+a { color: inherit; text-decoration: none; }
+img { max-width: 100%; }
+
+/* ─── SCROLLBAR ──────────────────────────────────────────── */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: var(--bg-b); }
+::-webkit-scrollbar-thumb { background: var(--accent); border-radius: 3px; }
+
+/* ─── ANIMATIONS ─────────────────────────────────────────── */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes fadeIn {
+  from { opacity: 0; } to { opacity: 1; }
+}
+@keyframes float {
+  0%,100% { transform: translateY(0); }
+  50%      { transform: translateY(-12px); }
+}
+@keyframes pulse-ring {
+  0%   { transform: scale(1); opacity: 0.6; }
+  100% { transform: scale(1.6); opacity: 0; }
+}
+@keyframes aurora {
+  0%   { background-position: 0% 50%; }
+  50%  { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+@keyframes shimmer {
+  0%   { background-position: -200% center; }
+  100% { background-position: 200% center; }
+}
+@keyframes counterUp {
+  from { opacity: 0; transform: translateY(10px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes borderPulse {
+  0%, 100% { border-color: rgba(108,99,255,0.2); }
+  50%       { border-color: rgba(108,99,255,0.5); }
+}
+
+.fade-up   { opacity: 0; transform: translateY(30px); transition: opacity 0.7s ease, transform 0.7s ease; }
+.fade-in   { opacity: 0; transition: opacity 0.7s ease; }
+.visible   { opacity: 1 !important; transform: translateY(0) !important; }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation: none !important; transition: none !important; }
+  .fade-up, .fade-in { opacity: 1; transform: none; }
+}
+
+/* ─── NAVBAR ─────────────────────────────────────────────── */
+.navbar {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0 5%;
+  height: 70px;
+  background: rgba(250,251,252,0.90);
+  backdrop-filter: blur(20px);
+  border-bottom: 1px solid rgba(108,99,255,0.12);
+  transition: var(--transition);
+}
+.navbar.scrolled {
+  background: rgba(250,251,252,0.98);
+  box-shadow: 0 4px 24px rgba(30,58,138,0.08);
+}
+.nav-logo {
+  display: flex; align-items: center; gap: 10px;
+  font-family: var(--font-display); font-weight: 700; font-size: 1.25rem;
+  color: var(--text-primary);
+}
+.nav-logo-badge {
+  width: 38px; height: 38px; border-radius: 10px;
+  background: linear-gradient(135deg, var(--accent), var(--accent-2));
+  display: flex; align-items: center; justify-content: center;
+  font-weight: 800; font-size: 0.9rem; color: #fff;
+  box-shadow: 0 0 15px var(--accent-glow);
+}
+.nav-links {
+  display: flex; align-items: center; gap: 2rem;
+  list-style: none;
+}
+.nav-links a {
+  font-size: 0.9rem; font-weight: 500; color: var(--text-secondary);
+  transition: var(--transition); position: relative; padding-bottom: 3px;
+}
+.nav-links a::after {
+  content: ''; position: absolute; bottom: 0; left: 0; width: 0; height: 2px;
+  background: linear-gradient(90deg, var(--accent), var(--accent-2));
+  transition: var(--transition);
+}
+.nav-links a:hover { color: var(--accent); }
+.nav-links a:hover::after { width: 100%; }
+.nav-cta {
+  display: flex; align-items: center; gap: 0.75rem;
+}
+.btn-nav-portal {
+  padding: 8px 18px; border-radius: var(--radius-sm);
+  border: 1px solid var(--border); background: transparent;
+  color: var(--text-secondary); font-size: 0.85rem; font-weight: 500;
+  cursor: pointer; transition: var(--transition); font-family: var(--font-body);
+}
+.btn-nav-portal:hover { border-color: var(--accent); color: var(--accent); background: var(--accent-glow); }
+.btn-nav-demo {
+  padding: 8px 20px; border-radius: var(--radius-sm);
+  background: linear-gradient(135deg, var(--accent), var(--accent-2));
+  color: #fff; font-size: 0.85rem; font-weight: 600;
+  cursor: pointer; transition: var(--transition); border: none;
+  font-family: var(--font-body); box-shadow: 0 0 20px var(--accent-glow);
+}
+.btn-nav-demo:hover { transform: translateY(-2px); box-shadow: 0 4px 25px var(--accent-glow); }
+.hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 5px; }
+.hamburger span { width: 24px; height: 2px; background: var(--text-primary); border-radius: 2px; transition: var(--transition); }
+
+/* ─── HERO ───────────────────────────────────────────────── */
+.hero {
+  min-height: 100vh;
+  background: var(--bg-a);
+  display: flex; flex-direction: column; justify-content: center; align-items: center;
+  text-align: center;
+  padding: 100px 5% 60px;
+  position: relative; overflow: hidden;
+}
+.hero-aurora {
+  position: absolute; inset: 0; z-index: 0; pointer-events: none;
+}
+.aurora-blob {
+  position: absolute; border-radius: 50%; filter: blur(80px); opacity: 0.25;
+  animation: float 8s ease-in-out infinite;
+}
+.aurora-blob-1 { width: 500px; height: 500px; background: #BFDBFE; top: -10%; left: -10%; animation-delay: 0s; }
+.aurora-blob-2 { width: 400px; height: 400px; background: #C7D2FE; bottom: -5%; right: -8%; animation-delay: 3s; }
+.aurora-blob-3 { width: 300px; height: 300px; background: #93C5FD; top: 40%; left: 30%; opacity: 0.2; animation-delay: 1.5s; }
+.hero-grid {
+  position: absolute; inset: 0; z-index: 0;
+  background-image:
+    linear-gradient(rgba(108,99,255,0.07) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(108,99,255,0.07) 1px, transparent 1px);
+  background-size: 50px 50px;
+  mask-image: radial-gradient(ellipse at center, black 30%, transparent 75%);
+}
+.hero-content { position: relative; z-index: 1; max-width: 860px; }
+.hero-live-badge {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 6px 16px; border-radius: 100px;
+  border: 1px solid rgba(37,99,235,0.3);
+  background: rgba(37,99,235,0.07);
+  color: #1E3A8A; font-size: 0.82rem; font-weight: 600;
+  margin-bottom: 1.5rem; letter-spacing: 0.05em;
+  animation: fadeIn 0.8s ease 0.2s both;
+}
+.live-dot {
+  width: 8px; height: 8px; border-radius: 50%; background: #22C55E;
+  position: relative;
+}
+.live-dot::after {
+  content: ''; position: absolute; inset: -3px; border-radius: 50%;
+  border: 2px solid #22C55E;
+  animation: pulse-ring 1.5s ease-out infinite;
+}
+.hero h1 {
+  font-family: var(--font-display); font-size: clamp(2.6rem, 6vw, 5rem);
+  font-weight: 700; line-height: 1.1; letter-spacing: -0.02em;
+  margin-bottom: 0.5rem;
+  animation: fadeUp 0.9s ease 0.3s both;
+}
+.hero h1 .gradient-text {
+  background: linear-gradient(135deg, var(--accent), var(--accent-2), #A78BFA);
+  background-size: 200% auto;
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: shimmer 4s linear infinite;
+}
+.hero-geo {
+  font-family: var(--font-display); font-size: clamp(0.85rem, 2vw, 1rem);
+  color: #2563EB; font-weight: 600; letter-spacing: 0.15em;
+  text-transform: uppercase; margin-bottom: 1.25rem;
+  animation: fadeUp 0.9s ease 0.4s both;
+}
+.hero-sub {
+  font-size: clamp(1rem, 2.5vw, 1.2rem); color: var(--text-secondary);
+  max-width: 600px; margin: 0 auto 2.5rem;
+  animation: fadeUp 0.9s ease 0.5s both;
+}
+.hero-buttons {
+  display: flex; align-items: center; justify-content: center; gap: 1rem; flex-wrap: wrap;
+  animation: fadeUp 0.9s ease 0.6s both;
+  margin-bottom: 4rem;
+}
+.btn-primary {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 14px 32px; border-radius: var(--radius);
+  background: linear-gradient(135deg, var(--accent), var(--accent-2));
+  color: #fff; font-weight: 600; font-size: 1rem;
+  border: none; cursor: pointer; transition: var(--transition);
+  font-family: var(--font-body);
+  box-shadow: 0 0 30px var(--accent-glow), 0 4px 20px rgba(0,0,0,0.3);
+  position: relative; overflow: hidden;
+}
+.btn-primary::before {
+  content: ''; position: absolute; inset: 0;
+  background: linear-gradient(135deg, rgba(255,255,255,0.15), transparent);
+  opacity: 0; transition: var(--transition);
+}
+.btn-primary:hover { transform: translateY(-3px); box-shadow: 0 8px 40px var(--accent-glow), 0 6px 30px rgba(0,0,0,0.4); }
+.btn-primary:hover::before { opacity: 1; }
+.btn-secondary {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 13px 28px; border-radius: var(--radius);
+  background: transparent; color: var(--text-primary); font-weight: 500; font-size: 1rem;
+  border: 1px solid var(--border-hover); cursor: pointer; transition: var(--transition);
+  font-family: var(--font-body);
+}
+.btn-secondary:hover { background: var(--accent-glow); border-color: var(--accent); transform: translateY(-2px); }
+
+/* ─── STATS ──────────────────────────────────────────────── */
+.stats-bar {
+  position: relative; z-index: 1;
+  display: grid; grid-template-columns: repeat(4, 1fr);
+  gap: 1.5rem; width: 100%; max-width: 750px;
+  margin: 0 auto;
+  animation: fadeUp 0.9s ease 0.8s both;
+}
+.stat-item { text-align: center; }
+.stat-number {
+  font-family: var(--font-display); font-size: 2rem; font-weight: 700;
+  background: linear-gradient(135deg, var(--accent), var(--accent-2));
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+  line-height: 1;
+}
+.stat-label { font-size: 0.78rem; color: var(--text-muted); margin-top: 4px; text-transform: uppercase; letter-spacing: 0.05em; }
+
+/* ─── SECTION COMMON ─────────────────────────────────────── */
+.section {
+  padding: 90px 5%;
+}
+.section-a { background: var(--bg-a); }
+.section-b { background: var(--bg-b); }
+.section-label {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-size: 0.78rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase;
+  color: var(--accent); margin-bottom: 1rem;
+}
+.section-label::before {
+  content: ''; width: 20px; height: 2px;
+  background: linear-gradient(90deg, var(--accent), var(--accent-2));
+  border-radius: 1px;
+}
+.section-title {
+  font-family: var(--font-display); font-size: clamp(1.8rem, 4vw, 2.8rem);
+  font-weight: 700; line-height: 1.2; letter-spacing: -0.02em;
+  margin-bottom: 1rem; color: var(--text-primary);
+}
+.section-title .hl {
+  background: linear-gradient(135deg, var(--accent), var(--accent-2));
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+}
+.section-sub { color: var(--text-secondary); font-size: 1.05rem; max-width: 580px; line-height: 1.7; }
+.section-header { margin-bottom: 3.5rem; }
+
+/* ─── TRAINER CARD ───────────────────────────────────────── */
+.trainer-section { display: flex; align-items: center; gap: 3rem; flex-wrap: wrap; }
+.trainer-avatar {
+  flex-shrink: 0;
+  width: 80px; height: 80px; border-radius: 50%;
+  background: linear-gradient(135deg, var(--accent), var(--accent-2));
+  display: flex; align-items: center; justify-content: center;
+  font-family: var(--font-display); font-size: 1.5rem; font-weight: 700; color: #fff;
+  box-shadow: 0 0 0 4px var(--surface), 0 0 0 8px var(--border);
+}
+.trainer-info { flex: 1; min-width: 200px; }
+.trainer-name { font-family: var(--font-display); font-size: 1.3rem; font-weight: 700; margin-bottom: 0.25rem; }
+.trainer-creds { color: var(--accent-2); font-size: 0.85rem; font-weight: 500; margin-bottom: 0.5rem; }
+.trainer-tags { display: flex; gap: 0.5rem; flex-wrap: wrap; }
+.tag {
+  padding: 4px 12px; border-radius: 100px;
+  background: var(--surface); border: 1px solid var(--border);
+  font-size: 0.75rem; color: var(--text-secondary); font-weight: 500;
+}
+
+/* ─── COURSES ────────────────────────────────────────────── */
+.courses-intro { display: flex; align-items: flex-start; justify-content: space-between; gap: 2rem; flex-wrap: wrap; margin-bottom: 3rem; }
+.audience-badge {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 8px 18px; border-radius: 100px;
+  border: 1px solid var(--border); background: var(--surface);
+  font-size: 0.85rem; font-weight: 500; color: var(--text-secondary);
+  margin-bottom: 2rem;
+}
+.courses-grid {
+  display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 1.25rem;
+}
+.course-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 1.5rem;
+  transition: var(--transition);
+  position: relative; overflow: hidden;
+  cursor: pointer;
+}
+.course-card::before {
+  content: ''; position: absolute; inset: 0;
+  background: linear-gradient(135deg, var(--accent-glow), transparent);
+  opacity: 0; transition: var(--transition);
+  border-radius: var(--radius-lg);
+}
+.course-card:hover {
+  border-color: var(--border-hover);
+  transform: translateY(-4px);
+  box-shadow: 0 8px 32px rgba(108,99,255,0.12), 0 2px 8px rgba(0,0,0,0.06);
+}
+.course-card:hover::before { opacity: 1; }
+.course-badge-hot {
+  position: absolute; top: 14px; right: 14px;
+  padding: 3px 10px; border-radius: 100px;
+  background: linear-gradient(135deg, #FF6B6B, #FF8E53);
+  font-size: 0.7rem; font-weight: 700; color: #fff; letter-spacing: 0.05em;
+}
+.course-icon { font-size: 1.8rem; margin-bottom: 0.75rem; }
+.course-name { font-family: var(--font-display); font-size: 1.05rem; font-weight: 700; margin-bottom: 0.5rem; }
+.course-meta { color: var(--text-muted); font-size: 0.8rem; margin-bottom: 1rem; display: flex; align-items: center; gap: 6px; }
+.course-price-block { display: flex; align-items: baseline; gap: 8px; margin-bottom: 1.25rem; }
+.course-price { font-family: var(--font-display); font-size: 1.4rem; font-weight: 700; color: var(--text-primary); }
+.course-price-orig { font-size: 0.9rem; color: var(--text-muted); text-decoration: line-through; }
+.course-cta {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 10px 16px; border-radius: var(--radius-sm);
+  background: linear-gradient(135deg, var(--accent), var(--accent-2));
+  color: #fff; font-weight: 600; font-size: 0.85rem;
+  transition: var(--transition); border: none; cursor: pointer;
+  font-family: var(--font-body); width: 100%;
+}
+.course-cta:hover { opacity: 0.9; transform: translateY(-1px); }
+.course-section-title {
+  font-family: var(--font-display); font-size: 1.1rem; font-weight: 600;
+  margin-bottom: 1.5rem; display: flex; align-items: center; gap: 10px;
+  color: var(--text-primary);
+}
+.course-section-title span { font-size: 1.3rem; }
+
+/* ─── WHY US ─────────────────────────────────────────────── */
+.features-grid {
+  display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1.5rem;
+}
+.feature-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 1.75rem;
+  transition: var(--transition);
+  animation: borderPulse 4s ease infinite;
+}
+.feature-card:hover {
+  border-color: var(--border-hover);
+  transform: translateY(-4px);
+  box-shadow: 0 8px 30px rgba(108,99,255,0.1);
+  animation: none;
+}
+.feature-icon {
+  width: 48px; height: 48px; border-radius: var(--radius-sm);
+  background: linear-gradient(135deg, var(--accent-glow), var(--cyan-glow));
+  border: 1px solid var(--border);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.4rem; margin-bottom: 1rem;
+}
+.feature-title { font-family: var(--font-display); font-size: 1rem; font-weight: 700; margin-bottom: 0.4rem; }
+.feature-desc { color: var(--text-secondary); font-size: 0.88rem; line-height: 1.6; }
+
+/* ─── RESOURCES ──────────────────────────────────────────── */
+.resources-grid {
+  display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 1.5rem;
+}
+.resource-card {
+  background: var(--surface-2);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 1.75rem;
+  transition: var(--transition);
+}
+.resource-card:hover {
+  border-color: rgba(37,99,235,0.35);
+  transform: translateY(-4px);
+  box-shadow: 0 8px 30px rgba(37,99,235,0.1);
+}
+.resource-type {
+  display: inline-flex; align-items: center; gap: 6px;
+  font-size: 0.72rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase;
+  color: #2563EB; margin-bottom: 0.75rem;
+}
+.resource-icon { font-size: 1.5rem; margin-bottom: 0.5rem; }
+.resource-title { font-family: var(--font-display); font-size: 1rem; font-weight: 700; margin-bottom: 0.35rem; }
+.resource-rating { color: #F59E0B; font-size: 0.82rem; margin-bottom: 0.5rem; }
+.resource-desc { color: var(--text-secondary); font-size: 0.85rem; line-height: 1.6; margin-bottom: 1.25rem; }
+.resource-links { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+.resource-link {
+  padding: 6px 14px; border-radius: var(--radius-sm);
+  border: 1px solid var(--border); background: transparent;
+  color: var(--text-secondary); font-size: 0.78rem; font-weight: 500;
+  transition: var(--transition); cursor: pointer;
+}
+.resource-link:hover { border-color: #2563EB; color: #2563EB; background: rgba(37,99,235,0.07); }
+
+/* ─── SOCIAL ─────────────────────────────────────────────── */
+.social-section { text-align: center; }
+.social-section .section-header { margin-bottom: 2rem; }
+.social-links { display: flex; justify-content: center; flex-wrap: wrap; gap: 1rem; }
+.social-link {
+  display: flex; align-items: center; gap: 8px;
+  padding: 12px 24px; border-radius: var(--radius);
+  border: 1px solid var(--border); background: var(--surface);
+  color: var(--text-secondary); font-weight: 500; font-size: 0.9rem;
+  transition: var(--transition);
+}
+.social-link:hover { border-color: var(--border-hover); color: var(--text-primary); transform: translateY(-3px); box-shadow: 0 4px 20px var(--accent-glow); }
+
+/* ─── TESTIMONIALS ───────────────────────────────────────── */
+.testimonials-grid {
+  display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1.5rem;
+}
+.testimonial-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 1.75rem;
+  transition: var(--transition);
+  position: relative;
+}
+.testimonial-card::before {
+  content: '"'; position: absolute; top: 10px; right: 20px;
+  font-family: var(--font-display); font-size: 5rem; line-height: 1;
+  color: var(--accent); opacity: 0.12; font-weight: 700;
+}
+.testimonial-card:hover {
+  border-color: var(--border-hover); transform: translateY(-4px);
+  box-shadow: 0 8px 30px rgba(108,99,255,0.1);
+}
+.testimonial-stars { color: #F59E0B; font-size: 0.9rem; margin-bottom: 1rem; }
+.testimonial-text { color: var(--text-secondary); font-size: 0.92rem; line-height: 1.75; margin-bottom: 1.25rem; font-style: italic; }
+.testimonial-author { display: flex; align-items: center; gap: 10px; }
+.testimonial-avatar {
+  width: 40px; height: 40px; border-radius: 50%;
+  background: linear-gradient(135deg, var(--accent), var(--accent-2));
+  display: flex; align-items: center; justify-content: center;
+  font-family: var(--font-display); font-size: 0.85rem; font-weight: 700; color: #fff;
+  flex-shrink: 0;
+}
+.testimonial-name { font-weight: 600; font-size: 0.9rem; }
+.testimonial-loc { color: var(--text-muted); font-size: 0.78rem; }
+
+/* ─── CTA BANNER ─────────────────────────────────────────── */
+.cta-banner {
+  background: var(--bg-a);
+  padding: 90px 5%;
+  text-align: center;
+  position: relative; overflow: hidden;
+}
+.cta-banner::before {
+  content: ''; position: absolute; inset: 0;
+  background: radial-gradient(ellipse at center, rgba(108,99,255,0.06) 0%, transparent 70%);
+  pointer-events: none;
+}
+.cta-banner .section-title { margin-bottom: 0.75rem; }
+.cta-banner .section-sub { margin: 0 auto 0.5rem; color: var(--text-secondary); font-size: 0.9rem; }
+.cta-sub { color: var(--accent); font-size: 0.85rem; font-weight: 500; margin-bottom: 2rem; display: block; }
+.cta-buttons { display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap; }
+
+/* ─── CONTACT ────────────────────────────────────────────── */
+.contact-grid { display: grid; grid-template-columns: 1fr 1.2fr; gap: 3rem; align-items: start; }
+.contact-info .section-title { margin-bottom: 0.5rem; }
+.contact-info .section-sub { margin-bottom: 2rem; }
+.trainer-contact-card {
+  background: var(--surface-2);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+.trainer-contact-name { font-family: var(--font-display); font-size: 1.1rem; font-weight: 700; margin-bottom: 0.25rem; }
+.trainer-contact-title { color: var(--text-secondary); font-size: 0.85rem; }
+.contact-items { display: flex; flex-direction: column; gap: 1rem; }
+.contact-item { display: flex; align-items: flex-start; gap: 12px; }
+.contact-item-icon {
+  width: 40px; height: 40px; border-radius: var(--radius-sm); flex-shrink: 0;
+  background: var(--surface); border: 1px solid var(--border);
+  display: flex; align-items: center; justify-content: center; font-size: 1.1rem;
+}
+.contact-item-label { font-size: 0.75rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 2px; }
+.contact-item-value { font-weight: 500; font-size: 0.95rem; color: var(--text-primary); transition: var(--transition); }
+.contact-item a:hover .contact-item-value { color: var(--accent-2); }
+
+/* ─── FORM ───────────────────────────────────────────────── */
+.contact-form {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 2rem;
+}
+.form-title { font-family: var(--font-display); font-size: 1.15rem; font-weight: 700; margin-bottom: 0.25rem; }
+.form-sub { color: var(--text-secondary); font-size: 0.85rem; margin-bottom: 1.5rem; }
+.form-group { margin-bottom: 1.1rem; }
+.form-group label { display: block; font-size: 0.82rem; font-weight: 500; color: var(--text-secondary); margin-bottom: 0.4rem; }
+.form-group input,
+.form-group select,
+.form-group textarea {
+  width: 100%; padding: 11px 14px; border-radius: var(--radius-sm);
+  background: #FFFFFF; border: 1px solid rgba(37,99,235,0.2);
+  color: var(--text-primary); font-size: 0.92rem; font-family: var(--font-body);
+  outline: none; transition: var(--transition); resize: vertical;
+}
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px var(--accent-glow);
+  background: #fff;
+}
+.form-group select { appearance: none; cursor: pointer; }
+.form-group select option { background: #fff; color: var(--text-primary); }
+.btn-form-submit {
+  width: 100%; padding: 13px; border-radius: var(--radius-sm);
+  background: linear-gradient(135deg, var(--accent), var(--accent-2));
+  color: #fff; font-weight: 600; font-size: 0.95rem; border: none;
+  cursor: pointer; transition: var(--transition); font-family: var(--font-body);
+  box-shadow: 0 0 20px var(--accent-glow);
+}
+.btn-form-submit:hover { transform: translateY(-2px); box-shadow: 0 4px 30px var(--accent-glow); }
+
+/* ─── FOOTER ─────────────────────────────────────────────── */
+.footer {
+  background: var(--bg-b);
+  border-top: 1px solid rgba(108,99,255,0.12);
+  padding: 60px 5% 30px;
+}
+.footer-grid {
+  display: grid; grid-template-columns: 1.5fr 1fr 1fr 1fr; gap: 3rem;
+  margin-bottom: 3rem;
+}
+.footer-brand .nav-logo { margin-bottom: 1rem; }
+.footer-brand p { color: var(--text-secondary); font-size: 0.87rem; line-height: 1.7; max-width: 240px; margin-bottom: 1.25rem; }
+.footer-social { display: flex; gap: 0.6rem; flex-wrap: wrap; }
+.footer-social-link {
+  width: 36px; height: 36px; border-radius: var(--radius-sm);
+  background: var(--surface); border: 1px solid var(--border);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 0.8rem; color: var(--text-secondary);
+  transition: var(--transition);
+}
+.footer-social-link:hover { border-color: var(--accent); color: var(--accent); background: var(--accent-glow); transform: translateY(-2px); }
+.footer-col h4 { font-family: var(--font-display); font-size: 0.85rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: var(--text-primary); margin-bottom: 1rem; }
+.footer-col ul { list-style: none; }
+.footer-col ul li { margin-bottom: 0.6rem; }
+.footer-col ul li a { color: var(--text-secondary); font-size: 0.88rem; transition: var(--transition); }
+.footer-col ul li a:hover { color: var(--accent-2); }
+.footer-bottom {
+  border-top: 1px solid rgba(108,99,255,0.12);
+  padding-top: 1.5rem;
+  display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem;
+}
+.footer-bottom p { color: var(--text-muted); font-size: 0.82rem; }
+
+/* ─── FLOATING CTA ───────────────────────────────────────── */
+.floating-cta {
+  position: fixed; bottom: 24px; right: 24px; z-index: 900;
+}
+.floating-cta a {
+  display: flex; align-items: center; gap: 8px;
+  padding: 12px 22px; border-radius: 100px;
+  background: linear-gradient(135deg, #25D366, #128C7E);
+  color: #fff; font-weight: 600; font-size: 0.88rem;
+  box-shadow: 0 4px 20px rgba(37,211,102,0.35);
+  transition: var(--transition);
+}
+.floating-cta a:hover { transform: translateY(-3px); box-shadow: 0 8px 30px rgba(37,211,102,0.45); }
+
+/* ─── MOBILE NAV ─────────────────────────────────────────── */
+.mobile-nav {
+  display: none;
+  position: fixed; top: 70px; left: 0; right: 0; z-index: 999;
+  background: rgba(250,251,252,0.98); backdrop-filter: blur(20px);
+  border-bottom: 1px solid rgba(108,99,255,0.12);
+  padding: 1.5rem 5%;
+  flex-direction: column; gap: 1rem;
+  animation: fadeUp 0.3s ease;
+}
+.mobile-nav.open { display: flex; }
+.mobile-nav a { color: var(--text-secondary); font-size: 1rem; font-weight: 500; padding: 0.5rem 0; border-bottom: 1px solid rgba(108,99,255,0.1); }
+.mobile-nav a:last-child { border-bottom: none; }
+.mobile-nav-cta { display: flex; gap: 0.75rem; margin-top: 0.5rem; }
+.mobile-nav-cta a { flex: 1; text-align: center; border-bottom: none !important; }
+
+/* ─── RESPONSIVE ─────────────────────────────────────────── */
+@media (max-width: 900px) {
+  .nav-links { display: none; }
+  .nav-cta { display: none; }
+  .hamburger { display: flex; }
+  .stats-bar { grid-template-columns: repeat(2, 1fr); }
+  .contact-grid { grid-template-columns: 1fr; }
+  .footer-grid { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 600px) {
+  .section { padding: 60px 5%; }
+  .hero { padding: 90px 5% 50px; }
+  .hero-buttons { flex-direction: column; align-items: center; }
+  .btn-primary, .btn-secondary { width: 100%; justify-content: center; }
+  .stats-bar { grid-template-columns: repeat(2, 1fr); gap: 1rem; }
+  .footer-grid { grid-template-columns: 1fr; }
+  .courses-grid { grid-template-columns: 1fr; }
+  .features-grid { grid-template-columns: 1fr; }
+  .cta-buttons { flex-direction: column; align-items: center; }
+  .floating-cta a span { display: none; }
+  .floating-cta a { border-radius: 50%; width: 52px; height: 52px; padding: 0; justify-content: center; }
+}
+
+/* ─── DIVIDER ────────────────────────────────────────────── */
+.divider {
+  height: 1px; background: linear-gradient(90deg, transparent, rgba(108,99,255,0.15), transparent);
+  margin: 0;
+}
+</style>
+</head>
+<body>
+
+<!-- ─── NAVBAR ───────────────────────────────────────────── -->
+<nav class="navbar" id="navbar">
+  <a href="#" class="nav-logo">
+    <div class="nav-logo-badge">S16</div>
+    Speed16 AI Academy
+  </a>
+  <ul class="nav-links">
+    <li><a href="#courses-nri">Courses</a></li>
+    <li><a href="#why">Why Us</a></li>
+    <li><a href="#resources">Resources</a></li>
+    <li><a href="#testimonials">Reviews</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <div class="nav-cta">
+    <a href="https://courses.speed16.com/s/authenticate" class="btn-nav-portal">Portal Login</a>
+    <a href="https://wa.me/919764058654/?text=Hi" class="btn-nav-demo">Free Demo</a>
+  </div>
+  <div class="hamburger" id="hamburger" onclick="toggleMobileNav()" role="button" aria-label="Toggle menu">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+
+<div class="mobile-nav" id="mobileNav">
+  <a href="#courses-nri" onclick="closeMobileNav()">Courses</a>
+  <a href="#why" onclick="closeMobileNav()">Why Us</a>
+  <a href="#resources" onclick="closeMobileNav()">Resources</a>
+  <a href="#testimonials" onclick="closeMobileNav()">Reviews</a>
+  <a href="#contact" onclick="closeMobileNav()">Contact</a>
+  <div class="mobile-nav-cta">
+    <a href="https://courses.speed16.com/s/authenticate" class="btn-nav-portal" style="padding:10px 0;border:1px solid rgba(108,99,255,0.2);border-radius:8px;text-align:center;color:var(--text-secondary);font-size:0.88rem;">Portal Login</a>
+    <a href="https://wa.me/919764058654/?text=Hi" class="btn-nav-demo" style="padding:10px 0;border-radius:8px;text-align:center;font-size:0.88rem;font-weight:600;background:linear-gradient(135deg,var(--accent),var(--accent-2));color:#fff;">Free Demo</a>
+  </div>
+</div>
+
+<!-- ─── HERO ─────────────────────────────────────────────── -->
+<section class="hero" id="hero">
+  <div class="hero-aurora">
+    <div class="aurora-blob aurora-blob-1"></div>
+    <div class="aurora-blob aurora-blob-2"></div>
+    <div class="aurora-blob aurora-blob-3"></div>
+  </div>
+  <div class="hero-grid"></div>
+
+  <div class="hero-content">
+    <div class="hero-live-badge">
+      <span class="live-dot"></span>
+      Start Learning Live
+    </div>
+    <p class="hero-geo">USA · Canada · Europe</p>
+    <h1>Speed16 <span class="gradient-text">AI Academy</span></h1>
+    <p class="hero-sub">Live Online Training for School/College Students, IT Aspirants &amp; Working IT Professionals.</p>
+    <div class="hero-buttons">
+      <a href="https://wa.me/919764058654/?text=Hi" class="btn-primary">
+        📲 Book a Free Demo
+      </a>
+      <a href="#courses-nri" class="btn-secondary">
+        Explore Courses →
+      </a>
+    </div>
+
+    <div class="stats-bar">
+      <div class="stat-item fade-up">
+        <div class="stat-number" data-target="2000" data-suffix="+">2000+</div>
+        <div class="stat-label">Happy Students</div>
+      </div>
+      <div class="stat-item fade-up" style="transition-delay:0.1s">
+        <div class="stat-number" data-target="12" data-suffix="+">12+</div>
+        <div class="stat-label">Courses</div>
+      </div>
+      <div class="stat-item fade-up" style="transition-delay:0.2s">
+        <div class="stat-number" data-target="15" data-suffix="+">15+</div>
+        <div class="stat-label">Yrs of Experience</div>
+      </div>
+      <div class="stat-item fade-up" style="transition-delay:0.3s">
+        <div class="stat-number" data-target="10" data-suffix="+">10+</div>
+        <div class="stat-label">Countries</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Trainer Strip -->
+<div class="section-b" style="padding: 30px 5%;">
+  <div class="trainer-section">
+    <div class="trainer-avatar">CP</div>
+    <div class="trainer-info">
+      <div class="trainer-name">Mr. Chaitanya Patil</div>
+      <div class="trainer-creds">BE, M.Tech, PhD*</div>
+      <div class="trainer-tags">
+        <span class="tag">15+ Yrs of Experience</span>
+        <span class="tag">Expert Author</span>
+        <span class="tag">AI Expert</span>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="divider"></div>
+
+<!-- ─── COURSES: NRI ──────────────────────────────────────── -->
+<section class="section section-a" id="courses-nri">
+  <div class="section-header fade-up">
+    <span class="section-label">🌍 Live Training</span>
+    <h2 class="section-title">Live Online Training for<br><span class="hl">NRI School/College Students</span></h2>
+    <p class="section-sub">Live Zoom sessions tailored for international students — including AP-CSP &amp; AP-CSA exam prep.</p>
+  </div>
+
+  <div class="audience-badge">🌍 USA / Canada / Europe</div>
+
+  <div class="courses-grid">
+    <div class="course-card fade-up">
+      <div class="course-badge-hot">HOT</div>
+      <div class="course-name">Python + AI</div>
+      <div class="course-meta">⏱ 8 Weeks · 24 Hours · Zoom</div>
+      <div class="course-price-block">
+        <span class="course-price">$129</span>
+        <span class="course-price-orig">$199</span>
+      </div>
+      <a href="/jr" class="course-cta">Learn More →</a>
+    </div>
+    <div class="course-card fade-up" style="transition-delay:0.1s">
+      <div class="course-name">Java Programming</div>
+      <div class="course-meta">⏱ 8 Weeks · 24 Hours · Zoom</div>
+      <div class="course-price-block">
+        <span class="course-price">$129</span>
+        <span class="course-price-orig">$199</span>
+      </div>
+      <a href="/jr" class="course-cta">Learn More →</a>
+    </div>
+    <div class="course-card fade-up" style="transition-delay:0.2s">
+      <div class="course-name">Robotics</div>
+      <div class="course-meta">⏱ 7 Weeks · 20 Hours · Zoom</div>
+      <div class="course-price-block">
+        <span class="course-price">$99</span>
+        <span class="course-price-orig">$199</span>
+      </div>
+      <a href="/jr" class="course-cta">Learn More →</a>
+    </div>
+
+    <div class="course-card fade-up" style="transition-delay:0.4s">
+      <div class="course-name">AP-CSP</div>
+      <div class="course-meta">⏱ Classes till exams · Zoom</div>
+      <div class="course-price-block">
+        <span class="course-price">$249</span>
+        <span class="course-price-orig">$399</span>
+      </div>
+      <a href=/jr target="_blank" class="course-cta">Learn More →</a>
+    </div>
+    <div class="course-card fade-up" style="transition-delay:0.5s">
+      <div class="course-name">AP-CSA</div>
+      <div class="course-meta">⏱ Classes till exams · Zoom</div>
+      <div class="course-price-block">
+        <span class="course-price">$249</span>
+        <span class="course-price-orig">$399</span>
+      </div>
+      <a href="/jr" class="course-cta">Learn More →</a>
+    </div>
+	
+
+    <div class="course-card fade-up" style="transition-delay:0.3s">
+      <div class="course-name">Vedic Speed Mathematics</div>
+      <div class="course-meta">⏱ 8 Weeks · 8 Hours · Zoom</div>
+      <div class="course-price-block">
+        <span class="course-price">FREE</span>
+        <span class="course-price-orig">$99</span>
+      </div>
+      <a href="/free" class="course-cta">Learn More →</a>
+    </div>
+
+
+    <div class="course-card fade-up" style="transition-delay:0.3s">
+      <div class="course-name">Rubik Cube</div>
+      <div class="course-meta">⏱ 4 Weeks · 4 Hours · Zoom</div>
+      <div class="course-price-block">
+        <span class="course-price">FREE</span>
+        <span class="course-price-orig">$99</span>
+      </div>
+      <a href="/free" class="course-cta">Learn More →</a>
+    </div>
+
+
+    <div class="course-card fade-up" style="transition-delay:0.3s">
+      <div class="course-name">Indian History & Culture</div>
+      <div class="course-meta">⏱ 6 Weeks · 6 Hours · Zoom</div>
+      <div class="course-price-block">
+        <span class="course-price">FREE</span>
+        <span class="course-price-orig">$99</span>
+      </div>
+      <a href="/free" class="course-cta">Learn More →</a>
+    </div>
+
+
+
+
+	
+	
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- IT PROFESSIONALS -->
+<section class="section section-b" id="courses-it">
+  <div class="section-header fade-up">
+    <span class="section-label">💼 IT Professionals</span>
+    <h2 class="section-title">Live Online Training for<br><span class="hl">IT Aspirants &amp; Professionals</span></h2>
+    <p class="section-sub">Industry-grade programs to build a resume-ready portfolio and boost your tech career.</p>
+  </div>
+
+  <div class="courses-grid">
+    <div class="course-card fade-up">
+      <div class="course-badge-hot">🔥 HOT</div>
+      <div class="course-icon">🐍</div>
+      <div class="course-name">Python + AI</div>
+      <div class="course-meta">⏱ 6 Weeks · 24 Hours · Zoom</div>
+      <div class="course-price-block">
+        <span class="course-price">$199</span>
+        <span class="course-price-orig">$299</span>
+      </div>
+      <a href="https://wa.me/919764058654/?text=Hi" class="course-cta">Learn More →</a>
+    </div>
+    <div class="course-card fade-up" style="transition-delay:0.1s">
+      <div class="course-icon">📊</div>
+      <div class="course-name">Data Science</div>
+      <div class="course-meta">⏱ 20 Weeks · Zoom</div>
+      <div class="course-price-block">
+        <span class="course-price">$499</span>
+        <span class="course-price-orig">$699</span>
+      </div>
+      <a href="https://wa.me/919764058654/?text=Hi" class="course-cta">Learn More →</a>
+    </div>
+    <div class="course-card fade-up" style="transition-delay:0.2s">
+      <div class="course-icon">☁️</div>
+      <div class="course-name">AWS + DevOps</div>
+      <div class="course-meta">⏱ 12 Weeks · 40 Hours · Zoom</div>
+      <div class="course-price-block">
+        <span class="course-price">$279</span>
+        <span class="course-price-orig">$399</span>
+      </div>
+      <a href="https://wa.me/919764058654/?text=Hi" class="course-cta">Learn More →</a>
+    </div>
+    <div class="course-card fade-up" style="transition-delay:0.3s">
+      <div class="course-icon">📈</div>
+      <div class="course-name">PowerBI</div>
+      <div class="course-meta">⏱ 10 Weeks · 30 Hours · Zoom</div>
+      <div class="course-price-block">
+        <span class="course-price">$259</span>
+        <span class="course-price-orig">$299</span>
+      </div>
+      <a href="https://wa.me/919764058654/?text=Hi" class="course-cta">Learn More →</a>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ─── WHY US ────────────────────────────────────────────── -->
+<section class="section section-a" id="why">
+  <div class="section-header fade-up" style="text-align:center; max-width:600px; margin: 0 auto 3.5rem;">
+    <span class="section-label">⭐ Our Promise</span>
+    <h2 class="section-title">Why <span class="hl">2000+ Students</span> Choose Us</h2>
+    <p class="section-sub">We don't just teach — we transform. Here's what makes Speed16 AI Academy the preferred choice globally.</p>
+  </div>
+
+  <div class="features-grid">
+    <div class="feature-card fade-up">
+      <div class="feature-icon">🎯</div>
+      <div class="feature-title">Live Interactive Training</div>
+      <div class="feature-desc">Real-time sessions on Zoom — ask questions, get instant answers.</div>
+    </div>
+    <div class="feature-card fade-up" style="transition-delay:0.05s">
+      <div class="feature-icon">👥</div>
+      <div class="feature-title">Small Batch Sizes</div>
+      <div class="feature-desc">Restricted batch sizes ensure personal attention for every student.</div>
+    </div>
+    <div class="feature-card fade-up" style="transition-delay:0.1s">
+      <div class="feature-icon">📐</div>
+      <div class="feature-title">Systematic Instruction</div>
+      <div class="feature-desc">Curriculum designed by industry experts for structured, logical learning.</div>
+    </div>
+    <div class="feature-card fade-up" style="transition-delay:0.15s">
+      <div class="feature-icon">🪜</div>
+      <div class="feature-title">Step-by-Step Teaching</div>
+      <div class="feature-desc">Zero to hero — no background required. We start from the very basics.</div>
+    </div>
+    <div class="feature-card fade-up" style="transition-delay:0.2s">
+      <div class="feature-icon">🛠️</div>
+      <div class="feature-title">Projects &amp; Assignments</div>
+      <div class="feature-desc">Hands-on projects (individual + group) to build a strong portfolio.</div>
+    </div>
+    <div class="feature-card fade-up" style="transition-delay:0.25s">
+      <div class="feature-icon">🏆</div>
+      <div class="feature-title">Certificates</div>
+      <div class="feature-desc">Certificate upon course completion.</div>
+    </div>
+    <div class="feature-card fade-up" style="transition-delay:0.3s">
+      <div class="feature-icon">📚</div>
+      <div class="feature-title">Free Study Material</div>
+      <div class="feature-desc">eBooks, presentations, programs and assignments — all free.</div>
+    </div>
+    <div class="feature-card fade-up" style="transition-delay:0.35s">
+      <div class="feature-icon">🌐</div>
+      <div class="feature-title">Global Community</div>
+      <div class="feature-desc">Join a like-minded global community of learners across 10+ countries.</div>
+    </div>
+    <div class="feature-card fade-up" style="transition-delay:0.4s">
+      <div class="feature-icon">🎓</div>
+      <div class="feature-title">Highly Experienced Trainers</div>
+      <div class="feature-desc">Learn from highly qualified &amp; highly experienced trainers.</div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ─── RESOURCES ─────────────────────────────────────────── -->
+<section class="section section-b" id="resources">
+  <div class="section-header fade-up">
+    <span class="section-label">📖 Learn Anywhere</span>
+    <h2 class="section-title">Self-Learning: Printed Books,<br><span class="hl">eBooks &amp; Udemy Video Courses</span></h2>
+    <p class="section-sub">Can't join live? Get our Udemy video courses, printed books &amp; eBooks — 17K+ students, 4.5+ ratings!</p>
+  </div>
+
+  <div class="resources-grid">
+    <div class="resource-card fade-up">
+      <div class="resource-type">🎬 Udemy Video Course</div>
+      <div class="resource-title">Python Programming</div>
+      <div class="resource-rating">★★★★½ 4.6+ · 1000+ Students</div>
+      <div class="resource-desc">Comprehensive Python from basics to advanced. Includes projects, exercises &amp; lifetime access. Discount coupon embedded in link.</div>
+      <div class="resource-links">
+        <a href="https://www.udemy.com/course/python_speed16/?referralCode=F12D09D7B7D24B50788A" class="resource-link">Udemy →</a>
+      </div>
+    </div>
+    <div class="resource-card fade-up" style="transition-delay:0.1s">
+      <div class="resource-type">🎬 Udemy Video Course</div>
+      <div class="resource-title">Vedic Speed Mathematics</div>
+      <div class="resource-rating">★★★★½ 4.7+ · 1500+ Students</div>
+      <div class="resource-desc">Master ancient Vedic techniques for lightning-fast calculations. Great for exams, professionals and everyday mental math. Discount coupon embedded in link.</div>
+      <div class="resource-links">
+        <a href="https://www.udemy.com/course/speedmaths/?referralCode=7852F40112045FBAD598" class="resource-link">Udemy →</a>
+      </div>
+    </div>
+    <div class="resource-card fade-up" style="transition-delay:0.2s">
+      <div class="resource-type">📱 eBook</div>
+      <div class="resource-title">Python Programming — eBook</div>
+      <div class="resource-rating">★★★★½ 4.6+ · 2000+ Students</div>
+      <div class="resource-desc">Step-by-step eBook for Python learners. Available on Kindle, Google Books &amp; Apple iBooks.</div>
+      <div class="resource-links">
+        <a href="https://amzn.to/3DPmBXj" class="resource-link">Kindle India</a>
+        <a href="https://amzn.to/3aL32mq" class="resource-link">Kindle USA</a>
+        <a href="https://play.google.com/store/books/details?id=TBDcDwAAQBAJ" class="resource-link">Google Books</a>
+        <a href="https://apple.co/3n7npAl" class="resource-link">Apple iBooks</a>
+      </div>
+    </div>
+    <div class="resource-card fade-up" style="transition-delay:0.3s">
+      <div class="resource-type">📱 eBook</div>
+      <div class="resource-title">Vedic Speed Mathematics — eBook</div>
+      <div class="resource-rating">★★★★ 4.2+ · 5000+ Students</div>
+      <div class="resource-desc">Popular eBook on Vedic Math techniques — available globally across all major platforms.</div>
+      <div class="resource-links">
+        <a href="https://amzn.to/3BvR8Zx" class="resource-link">Kindle India</a>
+        <a href="https://amzn.to/3Duahf9" class="resource-link">Kindle USA</a>
+        <a href="https://play.google.com/store/books/details?id=oA_cDwAAQBAJ" class="resource-link">Google Books</a>
+        <a href="https://apple.co/3mHgyNP" class="resource-link">Apple iBooks</a>
+      </div>
+    </div>
+    <div class="resource-card fade-up" style="transition-delay:0.4s">
+      <div class="resource-type">📗 Printed Book</div>
+      <div class="resource-title">Python Programming — Print Edition</div>
+      <div class="resource-rating">★★★★½ 4.5+ · 1200+ Students</div>
+      <div class="resource-desc">Printed book available on Amazon India. Perfect companion for hands-on learners.</div>
+      <div class="resource-links">
+        <a href="https://amzn.to/3NAcuA7" class="resource-link">Amazon India →</a>
+        <span class="resource-link" style="opacity:0.5;cursor:default;">Amazon USA (Coming Soon)</span>
+      </div>
+    </div>
+    <div class="resource-card fade-up" style="transition-delay:0.5s">
+      <div class="resource-type">📗 Printed Book</div>
+      <div class="resource-title">Vedic Maths — Print Edition</div>
+      <div class="resource-rating">★★★★½ 4.7+ · 5000+ Students</div>
+      <div class="resource-desc">Printed book available on Amazon India. Perfect companion for hands-on learners.</div>
+      <div class="resource-links">
+        <span class="resource-link" style="opacity:0.5;cursor:default;">Out of Stock (Coming Soon)</span>
+      </div>
+    </div>
+    <div class="resource-card fade-up" style="transition-delay:0.6s; grid-column: span 1;">
+      <div class="resource-type">🎁 eBook &amp; Video Course Package</div>
+      <div class="resource-title">Python / Vedic Maths @ ₹799 (US$9)</div>
+      <div class="resource-rating">★★★★½ 4.6+ · 1000+ Students</div>
+      <div class="resource-desc">Best value! Get eBook + Video Course + Study Materials + Step-by-step guide — all in one pocket-friendly bundle.</div>
+      <div class="resource-links">
+        <a href="https://courses.speed16.com/s/store" class="resource-link">Academy Portal →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ─── SOCIAL ────────────────────────────────────────────── -->
+<section class="section section-a social-section">
+  <div class="section-header fade-up">
+    <span class="section-label">📲 Follow Us</span>
+    <h2 class="section-title">Refresh Your Mind with<br><span class="hl">Maths &amp; Coding Quizzes</span></h2>
+    <p class="section-sub">Follow us on social media for weekly Maths &amp; Programming quizzes, tips, and updates!</p>
+  </div>
+  <div class="social-links fade-up">
+    <a href="https://www.facebook.com/Speed16Academy" class="social-link">📘 Facebook</a>
+    <a href="https://www.instagram.com/Speed16Academy" class="social-link">📸 Instagram</a>
+    <a href="https://x.com/speed16academy" class="social-link">𝕏 Twitter/X</a>
+    <a href="https://www.linkedin.com/company/speed16" class="social-link">💼 LinkedIn</a>
+    <a href="https://www.youtube.com/speed16academy" class="social-link">▶️ YouTube</a>
+    <a href="https://api.whatsapp.com/send?phone=919764058654&text=Hi" class="social-link">💬 WhatsApp</a>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ─── TESTIMONIALS ──────────────────────────────────────── -->
+<section class="section section-b" id="testimonials">
+  <div class="section-header fade-up" style="text-align:center; max-width:600px; margin:0 auto 3.5rem;">
+    <span class="section-label">💬 Student Reviews</span>
+    <h2 class="section-title">Don't Believe Us —<br><span class="hl">Believe Them</span></h2>
+    <p class="section-sub">Real words from real students across the globe who transformed their careers and academics with Speed16 AI Academy.</p>
+  </div>
+
+  <div class="testimonials-grid">
+    <div class="testimonial-card fade-up">
+      <div class="testimonial-stars">★★★★★</div>
+      <p class="testimonial-text">Speed16 AI Academy's curriculum is very structured which made us enroll. Chaitanya Patil's delivery method is excellent. He teaches systematically &amp; step by step. Study materials are outstanding &amp; easy to navigate. I recommend everyone to join this course.</p>
+      <div class="testimonial-author">
+        <div class="testimonial-avatar">S</div>
+        <div>
+          <div class="testimonial-name">Sudha (Mahika's Mother)</div>
+          <div class="testimonial-loc">📍 Virginia, USA</div>
+        </div>
+      </div>
+    </div>
+    <div class="testimonial-card fade-up" style="transition-delay:0.1s">
+      <div class="testimonial-stars">★★★★★</div>
+      <p class="testimonial-text">I liked the way of delivery and the systematic approach. I encouraged many of my colleagues &amp; friends to join. My entire team is learning Python from Prof. Chaitanya Patil. Overall it was a Great Learning Experience.</p>
+      <div class="testimonial-author">
+        <div class="testimonial-avatar">P</div>
+        <div>
+          <div class="testimonial-name">Prathiba</div>
+          <div class="testimonial-loc">📍 Software Professional, Montreal, Canada</div>
+        </div>
+      </div>
+    </div>
+    <div class="testimonial-card fade-up" style="transition-delay:0.2s">
+      <div class="testimonial-stars">★★★★★</div>
+      <p class="testimonial-text">Chaitanya Patil is a wonderful &amp; inspiring teacher. The Python training was an amazing experience. The course material, resources and delivery was 100%. Beautiful People, Amazing Teacher. Value for money. I recommend it to all. DO IT NOW!</p>
+      <div class="testimonial-author">
+        <div class="testimonial-avatar">Pr</div>
+        <div>
+          <div class="testimonial-name">Praneel</div>
+          <div class="testimonial-loc">📍 College Student, New Jersey, USA</div>
+        </div>
+      </div>
+    </div>
+    <div class="testimonial-card fade-up" style="transition-delay:0.3s">
+      <div class="testimonial-stars">★★★★★</div>
+      <p class="testimonial-text">Loved this course!!! Chaitanya Patil is so knowledgeable, grounded and humble. The training gave me lot of self confidence, information &amp; courage to advance my mathematics &amp; programming skills. Very inspiring and rewarding. You can blindly go ahead &amp; enroll.</p>
+      <div class="testimonial-author">
+        <div class="testimonial-avatar">Sh</div>
+        <div>
+          <div class="testimonial-name">Shivam Pande</div>
+          <div class="testimonial-loc">📍 School Student, Pune, India</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ─── CTA BANNER ────────────────────────────────────────── -->
+<section class="cta-banner section-a">
+  <div style="position:relative;z-index:1">
+    <div class="section-label" style="justify-content:center;margin-bottom:1rem">⚡ Limited Seats — New Batch Starting Soon!</div>
+    <h2 class="section-title fade-up" style="margin-bottom:0.75rem">Upgrade Your Academics &amp; Career<br>with <span class="hl">Math &amp; AI Skills</span></h2>
+    <p class="section-sub" style="margin:0 auto 0.5rem">Live Training · Industry Projects · Certificate · Global Community</p>
+    <div class="cta-buttons fade-up">
+      <a href="https://wa.me/919764058654/?text=Hi" class="btn-primary">💬 Join Now on WhatsApp</a>
+      <a href="https://courses.speed16.com/s/authenticate" class="btn-secondary">Access Course Portal →</a>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ─── CONTACT ───────────────────────────────────────────── -->
+<section class="section section-b" id="contact">
+  <div class="contact-grid">
+    <div class="contact-info">
+      <span class="section-label fade-up">📞 Get In Touch</span>
+      <h2 class="section-title fade-up">Let's <span class="hl">Talk</span></h2>
+
+      <div class="trainer-contact-card fade-up">
+        <div class="trainer-contact-name">Mr. Chaitanya Patil</div>
+        <div class="trainer-contact-title">Author, Trainer &amp; Director @Speed16 AI Academy<br>Available for queries, demo bookings &amp; enrollments.</div>
+      </div>
+
+      <div class="contact-items fade-up">
+        <a href="tel:+919764058654">
+          <div class="contact-item">
+            <div class="contact-item-icon">📞</div>
+            <div>
+              <div class="contact-item-label">Phone / WhatsApp</div>
+              <div class="contact-item-value">+91-97640-58-654</div>
+            </div>
+          </div>
+        </a>
+        <a href="https://wa.me/919764058654/?text=Hi">
+          <div class="contact-item">
+            <div class="contact-item-icon">💬</div>
+            <div>
+              <div class="contact-item-label">WhatsApp (Click to Chat)</div>
+              <div class="contact-item-value">+91-97640-58-654</div>
+            </div>
+          </div>
+        </a>
+        <a href="mailto:info@speed16.com">
+          <div class="contact-item">
+            <div class="contact-item-icon">✉️</div>
+            <div>
+              <div class="contact-item-label">Email</div>
+              <div class="contact-item-value">info@speed16.com</div>
+            </div>
+          </div>
+        </a>
+        <a href="https://www.speed16.com">
+          <div class="contact-item">
+            <div class="contact-item-icon">🌐</div>
+            <div>
+              <div class="contact-item-label">Website</div>
+              <div class="contact-item-value">www.speed16.com</div>
+            </div>
+          </div>
+        </a>
+      </div>
+    </div>
+
+    <div class="contact-form fade-up">
+      <div class="form-title">📋 Book a Free Demo</div>
+      <div class="form-sub">Fill in your details and we'll reach out to confirm your free session.</div>
+      <form onsubmit="handleFormSubmit(event)">
+        <div class="form-group">
+          <label for="name">Your Name</label>
+          <input type="text" id="name" placeholder="Your full name" required>
+        </div>
+        <div class="form-group">
+          <label for="whatsapp">WhatsApp Number</label>
+          <input type="tel" id="whatsapp" placeholder="+1 234 567 8900" required>
+        </div>
+        <div class="form-group">
+          <label for="email">Email Address</label>
+          <input type="email" id="email" placeholder="you@example.com" required>
+        </div>
+        <div class="form-group">
+          <label for="course">Interested In</label>
+          <select id="course">
+            <option value="">Select a course...</option>
+            <option>Python + AI (Juniors)</option>
+            <option>Python + AI (Seniors)</option>
+            <option>Java</option>
+            <option>Vedic Mathematics</option>
+            <option>Robotics</option>
+            <option>AP-CSP</option>
+            <option>AP-CSA</option>
+            <option>AWS + DevOps</option>
+            <option>Data Science</option>
+            <option>PowerBI</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="message">Message (Optional)</label>
+          <textarea id="message" rows="3" placeholder="Any additional details..."></textarea>
+        </div>
+        <button type="submit" class="btn-form-submit">💬 Submit &amp; Chat on WhatsApp</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- ─── FOOTER ────────────────────────────────────────────── -->
+<footer class="footer">
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <div class="nav-logo" style="margin-bottom:1rem">
+        <div class="nav-logo-badge">S16</div>
+        Speed16 AI Academy
+      </div>
+      <p>Live online training in Python, AI, Java, Robotics, Vedic Maths &amp; more. Trusted by 2000+ students across 10+ countries.</p>
+      <div class="footer-social">
+        <a href="https://www.facebook.com/Speed16Academy" class="footer-social-link" title="Facebook">fb</a>
+        <a href="https://www.instagram.com/Speed16Academy" class="footer-social-link" title="Instagram">in</a>
+        <a href="https://x.com/speed16academy" class="footer-social-link" title="Twitter/X">𝕏</a>
+        <a href="https://www.linkedin.com/company/speed16" class="footer-social-link" title="LinkedIn">li</a>
+        <a href="https://www.youtube.com/speed16academy" class="footer-social-link" title="YouTube">▶</a>
+        <a href="https://wa.me/919764058654/?text=Hi" class="footer-social-link" title="WhatsApp">wa</a>
+      </div>
+    </div>
+    <div class="footer-col">
+      <h4>Live Training</h4>
+      <ul>
+        <li><a href="https://wa.me/919764058654/?text=Hi">Python + AI</a></li>
+        <li><a href="https://wa.me/919764058654/?text=Hi">Java</a></li>
+        <li><a href="https://wa.me/919764058654/?text=Hi">AP-CSP &amp; AP-CSA</a></li>
+        <li><a href="https://wa.me/919764058654/?text=Hi">Robotics</a></li>
+        <li><a href="https://wa.me/919764058654/?text=Hi">Vedic Maths</a></li>
+        <li><a href="https://wa.me/919764058654/?text=Hi">AWS + DevOps</a></li>
+        <li><a href="https://wa.me/919764058654/?text=Hi">Data Science</a></li>
+        <li><a href="https://wa.me/919764058654/?text=Hi">PowerBI</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Resources</h4>
+      <ul>
+        <li><a href="https://www.udemy.com/course/python_speed16/?referralCode=F12D09D7B7D24B50788A">Udemy Python</a></li>
+        <li><a href="https://www.udemy.com/course/speedmaths/?referralCode=7852F40112045FBAD598">Udemy Vedic Maths</a></li>
+        <li><a href="https://amzn.to/3aL32mq">Python eBook</a></li>
+        <li><a href="https://amzn.to/3Duahf9">Vedic Maths eBook</a></li>
+        <li><a href="https://courses.speed16.com/s/store">eBooks + Video Courses</a></li>
+        <li><a href="https://courses.speed16.com/s/authenticate">Access Courses</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Company</h4>
+      <ul>
+        <li><a href="https://www.speed16.com/policy">Privacy Policy</a></li>
+        <li><a href="https://www.speed16.com/policy#tnc">Terms &amp; Conditions</a></li>
+        <li><a href="https://www.speed16.com/policy#refund">Refund Policy</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2026 <a href="https://www.speed16.com" style="color:#2563EB">Speed16 AI Academy</a> (Chaitanya Patil). All Rights Reserved. Made with ❤️ for learners worldwide 🌍</p>
+  </div>
+</footer>
+
+<!-- ─── FLOATING CTA ───────────────────────────────────────── -->
+<div class="floating-cta">
+  <a href="https://wa.me/919764058654/?text=Hi">
+    <span>💬</span>
+    <span>Book Free Demo!</span>
+  </a>
+</div>
+
+<!-- ─── JS ───────────────────────────────────────────────── -->
+<script>
+// Navbar scroll effect
+const navbar = document.getElementById('navbar');
+window.addEventListener('scroll', () => {
+  navbar.classList.toggle('scrolled', window.scrollY > 50);
+});
+
+// Mobile nav
+function toggleMobileNav() {
+  document.getElementById('mobileNav').classList.toggle('open');
+}
+function closeMobileNav() {
+  document.getElementById('mobileNav').classList.remove('open');
+}
+
+// Intersection Observer for scroll animations
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+      // Animated counters
+      const numbers = entry.target.querySelectorAll('.stat-number[data-target]');
+      numbers.forEach(el => animateCounter(el));
+    }
+  });
+}, { threshold: 0.15 });
+
+document.querySelectorAll('.fade-up, .fade-in').forEach(el => observer.observe(el));
+
+// Trigger stats immediately if hero is visible
+setTimeout(() => {
+  document.querySelectorAll('.stat-number[data-target]').forEach(el => animateCounter(el));
+  document.querySelectorAll('.stats-bar .fade-up').forEach(el => el.classList.add('visible'));
+}, 800);
+
+// Counter animation
+function animateCounter(el) {
+  if (el.dataset.animated) return;
+  el.dataset.animated = 'true';
+  const target = parseInt(el.dataset.target);
+  const suffix = el.dataset.suffix || '';
+  const duration = 1500;
+  const start = performance.now();
+  function update(time) {
+    const elapsed = time - start;
+    const progress = Math.min(elapsed / duration, 1);
+    const eased = 1 - Math.pow(1 - progress, 3);
+    el.textContent = Math.floor(eased * target) + suffix;
+    if (progress < 1) requestAnimationFrame(update);
+  }
+  requestAnimationFrame(update);
+}
+
+// Form submit → WhatsApp
+function handleFormSubmit(e) {
+  e.preventDefault();
+  const name = document.getElementById('name').value;
+  const whatsapp = document.getElementById('whatsapp').value;
+  const email = document.getElementById('email').value;
+  const course = document.getElementById('course').value;
+  const message = document.getElementById('message').value;
+  const text = encodeURIComponent(
+    `Hi! I'd like to book a Free Demo.\n\nName: ${name}\nWhatsApp: ${whatsapp}\nEmail: ${email}\nCourse: ${course || 'Not specified'}\nMessage: ${message || 'N/A'}`
+  );
+  window.open(`https://wa.me/919764058654/?text=${text}`, '_blank');
+}
+</script>
+</body>
+</html>
