@@ -1,0 +1,2466 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Speed16 AI Academy | Python + AI Live Online Classes for NRI Students</title>
+<meta name="description" content="Learn Python + AI with live online classes for NRI school and college students in USA, Canada & Europe. Age 10-18. Free trial class available.">
+
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+<!-- Bootstrap 5 -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+<!-- Font Awesome -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+
+<!-- AOS -->
+<link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
+
+<style>
+  :root {
+    --primary: #4f46e5;
+    --primary-dark: #3730a3;
+    --primary-light: #818cf8;
+    --secondary: #7c3aed;
+    --accent: #06b6d4;
+    --accent2: #10b981;
+    --gold: #f59e0b;
+    --white: #ffffff;
+    --bg-light: #f0f1ff;
+    --bg-dark: #0f0c29;
+    --text-dark: #1e1b4b;
+    --text-muted: #6b7280;
+    --card-bg: rgba(255,255,255,0.85);
+    --gradient-hero: linear-gradient(135deg, #0f0c29 0%, #302b63 50%, #24243e 100%);
+    --gradient-section: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    --gradient-cta: linear-gradient(90deg, #4f46e5, #7c3aed);
+    --gradient-green: linear-gradient(90deg, #059669, #10b981);
+    --shadow-card: 0 10px 40px rgba(79,70,229,0.12);
+    --shadow-hover: 0 20px 60px rgba(79,70,229,0.25);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Poppins', sans-serif;
+    color: var(--text-dark);
+    overflow-x: hidden;
+    background: #fafafa;
+  }
+
+  /* ========== NAVBAR ========== */
+  .navbar {
+    background: rgba(15,12,41,0.97);
+    backdrop-filter: blur(20px);
+    padding: 12px 0;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+    transition: all 0.3s ease;
+  }
+
+  .navbar-brand {
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: var(--white) !important;
+    letter-spacing: -0.5px;
+  }
+
+  .navbar-brand span { color: var(--primary-light); }
+
+  .nav-link {
+    color: rgba(255,255,255,0.85) !important;
+    font-size: 0.88rem;
+    font-weight: 500;
+    padding: 8px 14px !important;
+    border-radius: 8px;
+    transition: all 0.2s;
+  }
+
+  .nav-link:hover {
+    color: var(--white) !important;
+    background: rgba(255,255,255,0.08);
+  }
+
+  .nav-cta {
+    background: var(--gradient-cta) !important;
+    color: white !important;
+    border-radius: 50px !important;
+    padding: 8px 20px !important;
+    font-weight: 600;
+    box-shadow: 0 4px 15px rgba(79,70,229,0.4);
+  }
+
+  .nav-cta:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(79,70,229,0.5) !important;
+    background: rgba(0,0,0,0) !important;
+  }
+
+  /* ========== HERO ========== */
+  .hero {
+    background: var(--gradient-hero);
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+    padding: 100px 0 80px;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(ellipse at 30% 40%, rgba(79,70,229,0.25) 0%, transparent 60%),
+                radial-gradient(ellipse at 70% 60%, rgba(124,58,237,0.2) 0%, transparent 60%);
+    animation: pulse-bg 8s ease-in-out infinite alternate;
+  }
+
+  @keyframes pulse-bg {
+    from { transform: scale(1) rotate(0deg); }
+    to { transform: scale(1.05) rotate(3deg); }
+  }
+
+  .hero-badge {
+    display: inline-block;
+    background: rgba(79,70,229,0.25);
+    border: 1px solid rgba(129,140,248,0.4);
+    border-radius: 50px;
+    padding: 6px 18px;
+    font-size: 0.82rem;
+    font-weight: 600;
+    color: var(--primary-light);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+  }
+
+  .hero h1 {
+    font-size: clamp(2.2rem, 5vw, 3.8rem);
+    font-weight: 900;
+    color: var(--white);
+    line-height: 1.15;
+    letter-spacing: -1px;
+    margin-bottom: 16px;
+  }
+
+  .hero h1 .highlight {
+    background: linear-gradient(90deg, #818cf8, #a78bfa, #06b6d4);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .hero-sub {
+    font-size: 1.15rem;
+    color: rgba(255,255,255,0.75);
+    margin-bottom: 12px;
+    font-weight: 400;
+  }
+
+  .hero-locations {
+    font-size: 0.95rem;
+    color: var(--accent);
+    font-weight: 600;
+    letter-spacing: 2px;
+    margin-bottom: 30px;
+  }
+
+  .hero-pills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 36px;
+  }
+
+  .hero-pill {
+    background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(255,255,255,0.15);
+    border-radius: 50px;
+    padding: 7px 16px;
+    font-size: 0.84rem;
+    color: rgba(255,255,255,0.9);
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  .hero-pill i { color: var(--accent); font-size: 0.75rem; }
+
+  .btn-primary-hero {
+    background: var(--gradient-cta);
+    color: white;
+    border: none;
+    border-radius: 50px;
+    padding: 14px 32px;
+    font-size: 1rem;
+    font-weight: 700;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    box-shadow: 0 8px 30px rgba(79,70,229,0.5);
+    transition: all 0.3s ease;
+    animation: pulse-btn 2.5s ease-in-out infinite;
+  }
+
+  @keyframes pulse-btn {
+    0%, 100% { box-shadow: 0 8px 30px rgba(79,70,229,0.5); }
+    50% { box-shadow: 0 12px 40px rgba(79,70,229,0.75); }
+  }
+
+  .btn-primary-hero:hover {
+    transform: translateY(-3px) scale(1.03);
+    color: white;
+    box-shadow: 0 15px 40px rgba(79,70,229,0.7);
+    animation: none;
+  }
+
+  .btn-whatsapp {
+    background: var(--gradient-green);
+    color: white;
+    border: none;
+    border-radius: 50px;
+    padding: 14px 32px;
+    font-size: 1rem;
+    font-weight: 700;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    box-shadow: 0 8px 30px rgba(16,185,129,0.4);
+    transition: all 0.3s ease;
+  }
+
+  .btn-whatsapp:hover {
+    transform: translateY(-3px) scale(1.03);
+    color: white;
+    box-shadow: 0 15px 40px rgba(16,185,129,0.6);
+  }
+
+  /* Hero illustration */
+  .hero-illustration {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .hero-svg-wrap {
+    position: relative;
+    animation: float 6s ease-in-out infinite;
+    filter: drop-shadow(0 30px 60px rgba(79,70,229,0.35));
+  }
+
+  @keyframes float {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-20px); }
+  }
+
+  /* ========== SECTION STYLES ========== */
+  .section-label {
+    display: inline-block;
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--primary);
+    background: rgba(79,70,229,0.1);
+    border-radius: 50px;
+    padding: 5px 16px;
+    margin-bottom: 12px;
+  }
+
+  .section-title {
+    font-size: clamp(1.7rem, 3.5vw, 2.5rem);
+    font-weight: 800;
+    color: var(--text-dark);
+    line-height: 1.2;
+    letter-spacing: -0.5px;
+  }
+
+  .section-subtitle {
+    font-size: 1.05rem;
+    color: var(--text-muted);
+    max-width: 600px;
+    margin: 0 auto;
+  }
+
+  /* ========== TRUST STATS ========== */
+  .stats-strip {
+    background: var(--gradient-cta);
+    padding: 40px 0;
+    position: relative;
+  }
+
+  .stats-strip::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+  }
+
+  .stat-item { text-align: center; position: relative; }
+
+  .stat-number {
+    font-size: 2.4rem;
+    font-weight: 900;
+    color: var(--white);
+    line-height: 1;
+    display: block;
+  }
+
+  .stat-label {
+    font-size: 0.85rem;
+    color: rgba(255,255,255,0.8);
+    font-weight: 500;
+    margin-top: 5px;
+  }
+
+  /* ========== TRUST CARDS ========== */
+  .trust-section { background: var(--bg-light); padding: 80px 0; }
+
+  .trust-card {
+    background: var(--card-bg);
+    border-radius: 20px;
+    padding: 28px 22px;
+    text-align: center;
+    box-shadow: var(--shadow-card);
+    border: 1px solid rgba(79,70,229,0.08);
+    transition: all 0.3s ease;
+    height: 100%;
+  }
+
+  .trust-card:hover {
+    transform: translateY(-8px);
+    box-shadow: var(--shadow-hover);
+    border-color: rgba(79,70,229,0.2);
+  }
+
+  .trust-icon {
+    width: 60px;
+    height: 60px;
+    background: var(--gradient-cta);
+    border-radius: 16px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.4rem;
+    color: white;
+    margin-bottom: 14px;
+    box-shadow: 0 8px 20px rgba(79,70,229,0.3);
+  }
+
+  .trust-card h5 {
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: var(--text-dark);
+    margin-bottom: 4px;
+  }
+
+  .trust-card p {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    margin: 0;
+  }
+
+  /* ========== ABOUT INSTRUCTOR ========== */
+  .instructor-section { padding: 80px 0; background: white; }
+
+  .instructor-card {
+    background: var(--gradient-hero);
+    border-radius: 28px;
+    padding: 50px 40px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .instructor-card::before {
+    content: '';
+    position: absolute;
+    top: -40px;
+    right: -40px;
+    width: 250px;
+    height: 250px;
+    background: radial-gradient(circle, rgba(129,140,248,0.15) 0%, transparent 70%);
+    border-radius: 50%;
+  }
+
+  .instructor-photo {
+    width: 160px;
+    height: 160px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #4f46e5, #7c3aed);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 4rem;
+    color: white;
+    margin: 0 auto 20px;
+    border: 4px solid rgba(255,255,255,0.2);
+    box-shadow: 0 20px 50px rgba(0,0,0,0.3);
+  }
+
+  .instructor-name {
+    font-size: 1.8rem;
+    font-weight: 800;
+    color: white;
+    margin-bottom: 6px;
+  }
+
+  .instructor-title {
+    font-size: 0.9rem;
+    color: var(--primary-light);
+    margin-bottom: 4px;
+    font-weight: 500;
+  }
+
+  .instructor-badge {
+    display: inline-block;
+    background: rgba(79,70,229,0.3);
+    border: 1px solid rgba(129,140,248,0.3);
+    border-radius: 50px;
+    padding: 5px 14px;
+    font-size: 0.78rem;
+    color: rgba(255,255,255,0.9);
+    margin: 4px;
+  }
+
+  /* ========== COURSE DETAILS ========== */
+  .course-section { padding: 80px 0; background: var(--bg-light); }
+
+  .course-main-card {
+    background: white;
+    border-radius: 28px;
+    padding: 40px;
+    box-shadow: var(--shadow-card);
+    border: 1px solid rgba(79,70,229,0.1);
+  }
+
+  .course-detail-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    padding: 16px 0;
+    border-bottom: 1px solid rgba(79,70,229,0.07);
+  }
+
+  .course-detail-item:last-child { border-bottom: none; }
+
+  .detail-icon {
+    width: 42px;
+    height: 42px;
+    background: rgba(79,70,229,0.1);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--primary);
+    font-size: 1rem;
+    flex-shrink: 0;
+  }
+
+  .detail-label {
+    font-size: 0.78rem;
+    color: var(--text-muted);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+
+  .detail-value {
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--text-dark);
+    margin-top: 2px;
+  }
+
+  /* ========== SYLLABUS ========== */
+  .syllabus-section { padding: 80px 0; background: white; }
+
+  .syllabus-timeline {
+    position: relative;
+    padding-left: 30px;
+  }
+
+  .syllabus-timeline::before {
+    content: '';
+    position: absolute;
+    left: 10px;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: linear-gradient(to bottom, var(--primary), var(--secondary));
+  }
+
+  .syllabus-item {
+    position: relative;
+    padding: 0 0 24px 24px;
+  }
+
+  .syllabus-item::before {
+    content: '';
+    position: absolute;
+    left: -24px;
+    top: 6px;
+    width: 12px;
+    height: 12px;
+    background: var(--primary);
+    border-radius: 50%;
+    border: 2px solid white;
+    box-shadow: 0 0 0 3px rgba(79,70,229,0.2);
+  }
+
+  .syllabus-card {
+    background: var(--bg-light);
+    border-radius: 14px;
+    padding: 16px 20px;
+    border: 1px solid rgba(79,70,229,0.1);
+    transition: all 0.2s;
+  }
+
+  .syllabus-card:hover {
+    background: rgba(79,70,229,0.05);
+    border-color: rgba(79,70,229,0.2);
+    transform: translateX(6px);
+  }
+
+  .syllabus-num {
+    font-size: 0.75rem;
+    color: var(--primary);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+
+  .syllabus-title {
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--text-dark);
+    margin-bottom: 4px;
+  }
+
+  .syllabus-desc {
+    font-size: 0.82rem;
+    color: var(--text-muted);
+  }
+
+  /* ========== LEARN SKILLS ========== */
+  .skills-section { padding: 80px 0; background: var(--gradient-hero); }
+
+  .skill-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(255,255,255,0.12);
+    border-radius: 50px;
+    padding: 10px 20px;
+    font-size: 0.88rem;
+    color: white;
+    font-weight: 500;
+    transition: all 0.2s;
+    cursor: default;
+    margin: 6px;
+  }
+
+  .skill-chip:hover {
+    background: rgba(79,70,229,0.4);
+    border-color: rgba(129,140,248,0.4);
+    transform: scale(1.05);
+  }
+
+  .skill-chip i { color: var(--accent); font-size: 0.8rem; }
+
+  /* ========== FEATURES ========== */
+  .features-section { padding: 80px 0; background: var(--bg-light); }
+
+  .feature-card {
+    background: white;
+    border-radius: 20px;
+    padding: 26px 22px;
+    box-shadow: var(--shadow-card);
+    border: 1px solid rgba(79,70,229,0.07);
+    transition: all 0.3s;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  .feature-card:hover {
+    transform: translateY(-6px);
+    box-shadow: var(--shadow-hover);
+  }
+
+  .feature-icon-wrap {
+    width: 50px;
+    height: 50px;
+    border-radius: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.3rem;
+    color: white;
+  }
+
+  .feature-card h5 {
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: var(--text-dark);
+    margin: 0;
+  }
+
+  .feature-card p {
+    font-size: 0.82rem;
+    color: var(--text-muted);
+    margin: 0;
+  }
+
+  /* ========== PRICING ========== */
+  .pricing-section { padding: 80px 0; background: white; }
+
+  .pricing-card {
+    background: var(--gradient-hero);
+    border-radius: 28px;
+    padding: 50px 40px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 30px 80px rgba(15,12,41,0.3);
+  }
+
+  .pricing-card::before {
+    content: '';
+    position: absolute;
+    top: -60px;
+    right: -60px;
+    width: 220px;
+    height: 220px;
+    background: radial-gradient(circle, rgba(79,70,229,0.3) 0%, transparent 70%);
+    border-radius: 50%;
+  }
+
+  .price-badge {
+    display: inline-block;
+    background: var(--gold);
+    color: #1e1b4b;
+    font-size: 0.78rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    padding: 5px 16px;
+    border-radius: 50px;
+    margin-bottom: 20px;
+  }
+
+  .price-original {
+    font-size: 1.1rem;
+    color: rgba(255,255,255,0.5);
+    text-decoration: line-through;
+    margin-bottom: 4px;
+  }
+
+  .price-main {
+    font-size: 3.5rem;
+    font-weight: 900;
+    color: white;
+    line-height: 1;
+  }
+
+  .price-main sup {
+    font-size: 1.5rem;
+    vertical-align: super;
+    font-weight: 700;
+  }
+
+  .price-inr {
+    color: var(--primary-light);
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin: 8px 0 20px;
+  }
+
+  .pricing-includes {
+    list-style: none;
+    padding: 0;
+    margin: 20px 0 30px;
+    text-align: left;
+  }
+
+  .pricing-includes li {
+    padding: 8px 0;
+    color: rgba(255,255,255,0.9);
+    font-size: 0.92rem;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    border-bottom: 1px solid rgba(255,255,255,0.07);
+  }
+
+  .pricing-includes li i { color: var(--accent2); }
+
+  .price-note {
+    font-size: 0.82rem;
+    color: rgba(255,255,255,0.6);
+    margin-top: 16px;
+  }
+
+  /* ========== TESTIMONIALS ========== */
+  .testimonials-section { padding: 80px 0; background: var(--bg-light); }
+
+  .testimonial-card {
+    background: white;
+    border-radius: 24px;
+    padding: 32px 28px;
+    box-shadow: var(--shadow-card);
+    border: 1px solid rgba(79,70,229,0.08);
+    transition: all 0.3s;
+    height: 100%;
+  }
+
+  .testimonial-card:hover {
+    transform: translateY(-6px);
+    box-shadow: var(--shadow-hover);
+  }
+
+  .stars { color: var(--gold); margin-bottom: 14px; font-size: 0.9rem; }
+
+  .testimonial-text {
+    font-size: 0.92rem;
+    color: var(--text-muted);
+    line-height: 1.7;
+    margin-bottom: 20px;
+    font-style: italic;
+  }
+
+  .testimonial-author {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .author-avatar {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: white;
+    flex-shrink: 0;
+  }
+
+  .author-name { font-size: 0.9rem; font-weight: 700; color: var(--text-dark); }
+  .author-role { font-size: 0.78rem; color: var(--text-muted); }
+
+  /* ========== FAQ ========== */
+  .faq-section { padding: 80px 0; background: white; }
+
+  .faq-item {
+    background: var(--bg-light);
+    border-radius: 16px;
+    margin-bottom: 12px;
+    border: 1px solid rgba(79,70,229,0.08);
+    overflow: hidden;
+    transition: all 0.2s;
+  }
+
+  .faq-item.active {
+    border-color: rgba(79,70,229,0.2);
+    box-shadow: 0 4px 20px rgba(79,70,229,0.1);
+  }
+
+  .faq-question {
+    width: 100%;
+    background: transparent;
+    border: none;
+    padding: 20px 24px;
+    text-align: left;
+    font-family: 'Poppins', sans-serif;
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--text-dark);
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .faq-arrow {
+    font-size: 0.8rem;
+    color: var(--primary);
+    transition: transform 0.3s;
+    flex-shrink: 0;
+  }
+
+  .faq-item.active .faq-arrow { transform: rotate(180deg); }
+
+  .faq-answer {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease;
+    padding: 0 24px;
+    font-size: 0.88rem;
+    color: var(--text-muted);
+    line-height: 1.7;
+  }
+
+  .faq-answer.open {
+    max-height: 200px;
+    padding-bottom: 20px;
+  }
+
+  /* ========== WHATSAPP SECTION ========== */
+  .whatsapp-section { padding: 80px 0; background: var(--gradient-section); }
+
+  .whatsapp-card {
+    background: rgba(255,255,255,0.1);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255,255,255,0.2);
+    border-radius: 28px;
+    padding: 50px 40px;
+    text-align: center;
+  }
+
+  .whatsapp-icon-wrap {
+    width: 90px;
+    height: 90px;
+    background: var(--gradient-green);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2.5rem;
+    color: white;
+    margin: 0 auto 24px;
+    box-shadow: 0 15px 40px rgba(16,185,129,0.4);
+    animation: whatsapp-pulse 2s ease-in-out infinite;
+  }
+
+  @keyframes whatsapp-pulse {
+    0%, 100% { transform: scale(1); box-shadow: 0 15px 40px rgba(16,185,129,0.4); }
+    50% { transform: scale(1.08); box-shadow: 0 20px 50px rgba(16,185,129,0.6); }
+  }
+
+  .btn-whatsapp-big {
+    background: var(--gradient-green);
+    color: white;
+    border: none;
+    border-radius: 50px;
+    padding: 16px 40px;
+    font-size: 1.1rem;
+    font-weight: 700;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    box-shadow: 0 10px 30px rgba(16,185,129,0.4);
+    transition: all 0.3s;
+  }
+
+  .btn-whatsapp-big:hover {
+    transform: translateY(-3px) scale(1.03);
+    color: white;
+    box-shadow: 0 18px 45px rgba(16,185,129,0.6);
+  }
+
+  .wa-benefit {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    color: rgba(255,255,255,0.9);
+    font-size: 0.88rem;
+    margin: 6px 12px;
+  }
+
+  .wa-benefit i { color: #6ee7b7; font-size: 0.75rem; }
+
+  /* ========== LEAD FORM ========== */
+  .form-section { padding: 80px 0; background: var(--bg-light); }
+
+  .form-card {
+    background: white;
+    border-radius: 28px;
+    padding: 50px 40px;
+    box-shadow: 0 20px 60px rgba(79,70,229,0.1);
+    border: 1px solid rgba(79,70,229,0.08);
+  }
+
+  .form-label {
+    font-size: 0.82rem;
+    font-weight: 600;
+    color: var(--text-dark);
+    margin-bottom: 6px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+
+  .form-control, .form-select {
+    border-radius: 12px;
+    border: 1.5px solid rgba(79,70,229,0.15);
+    padding: 12px 16px;
+    font-size: 0.9rem;
+    font-family: 'Poppins', sans-serif;
+    transition: all 0.2s;
+    background: var(--bg-light);
+  }
+
+  .form-control:focus, .form-select:focus {
+    border-color: var(--primary);
+    box-shadow: 0 0 0 4px rgba(79,70,229,0.1);
+    background: white;
+  }
+
+  .btn-submit {
+    background: var(--gradient-cta);
+    color: white;
+    border: none;
+    border-radius: 50px;
+    padding: 16px 40px;
+    font-size: 1.05rem;
+    font-weight: 700;
+    font-family: 'Poppins', sans-serif;
+    width: 100%;
+    cursor: pointer;
+    transition: all 0.3s;
+    box-shadow: 0 10px 30px rgba(79,70,229,0.4);
+  }
+
+  .btn-submit:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 16px 40px rgba(79,70,229,0.55);
+  }
+
+  .success-msg {
+    display: none;
+    background: rgba(16,185,129,0.1);
+    border: 1px solid rgba(16,185,129,0.3);
+    border-radius: 16px;
+    padding: 24px;
+    text-align: center;
+    color: var(--accent2);
+    font-weight: 600;
+  }
+
+  /* ========== OTHER COURSES ========== */
+  .courses-section { padding: 80px 0; background: white; }
+
+  .course-card {
+    border-radius: 20px;
+    padding: 28px 24px;
+    transition: all 0.3s;
+    height: 100%;
+    border: 1px solid rgba(79,70,229,0.1);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .course-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 4px;
+    border-radius: 20px 20px 0 0;
+  }
+
+  .course-card:hover {
+    transform: translateY(-8px);
+    box-shadow: var(--shadow-hover);
+  }
+
+  .course-card .course-icon {
+    font-size: 2.2rem;
+    margin-bottom: 14px;
+    display: block;
+  }
+
+  .course-card h5 {
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--text-dark);
+    margin-bottom: 6px;
+  }
+
+  .course-card p {
+    font-size: 0.82rem;
+    color: var(--text-muted);
+    margin: 0;
+  }
+
+  /* ========== FREE COURSES ========== */
+  .free-section { padding: 80px 0; background: var(--bg-light); }
+
+  .free-card {
+    background: white;
+    border-radius: 20px;
+    padding: 30px 26px;
+    box-shadow: var(--shadow-card);
+    border: 2px solid transparent;
+    background-clip: padding-box;
+    transition: all 0.3s;
+    text-align: center;
+    height: 100%;
+    position: relative;
+  }
+
+  .free-badge {
+    position: absolute;
+    top: -12px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--gradient-green);
+    color: white;
+    font-size: 0.72rem;
+    font-weight: 800;
+    padding: 4px 14px;
+    border-radius: 50px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+
+  .free-card:hover {
+    transform: translateY(-6px);
+    box-shadow: var(--shadow-hover);
+  }
+
+  /* ========== FINAL CTA ========== */
+  .final-cta { padding: 100px 0; background: var(--gradient-hero); text-align: center; position: relative; overflow: hidden; }
+
+  .final-cta::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at 50% 50%, rgba(79,70,229,0.3) 0%, transparent 70%);
+  }
+
+  /* ========== CONTACT SECTION ========== */
+  .contact-section { padding: 60px 0; background: white; }
+
+  .contact-item {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 16px 0;
+    border-bottom: 1px solid rgba(79,70,229,0.07);
+  }
+
+  .contact-icon {
+    width: 46px;
+    height: 46px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.1rem;
+    color: white;
+    flex-shrink: 0;
+  }
+
+  /* ========== FOOTER ========== */
+  footer {
+    background: var(--bg-dark);
+    padding: 60px 0 30px;
+    color: rgba(255,255,255,0.7);
+  }
+
+  .footer-brand {
+    font-size: 1.6rem;
+    font-weight: 800;
+    color: white;
+    margin-bottom: 10px;
+  }
+
+  .footer-brand span { color: var(--primary-light); }
+
+  .footer-link {
+    color: rgba(255,255,255,0.6);
+    text-decoration: none;
+    font-size: 0.85rem;
+    transition: color 0.2s;
+    display: block;
+    margin-bottom: 8px;
+  }
+
+  .footer-link:hover { color: var(--primary-light); }
+
+  .social-icon {
+    width: 40px;
+    height: 40px;
+    background: rgba(255,255,255,0.08);
+    border-radius: 10px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: rgba(255,255,255,0.7);
+    text-decoration: none;
+    font-size: 1rem;
+    transition: all 0.2s;
+    margin-right: 8px;
+  }
+
+  .social-icon:hover {
+    background: var(--primary);
+    color: white;
+    transform: translateY(-3px);
+  }
+
+  .footer-divider {
+    border-top: 1px solid rgba(255,255,255,0.08);
+    margin: 30px 0 20px;
+  }
+
+  /* ========== FLOATING BUTTONS ========== */
+  .floating-wa {
+    position: fixed;
+    bottom: 24px;
+    right: 24px;
+    z-index: 9999;
+    background: var(--gradient-green);
+    color: white;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.6rem;
+    text-decoration: none;
+    box-shadow: 0 8px 25px rgba(16,185,129,0.5);
+    animation: float-btn 3s ease-in-out infinite;
+    transition: transform 0.2s;
+  }
+
+  .floating-wa:hover {
+    color: white;
+    transform: scale(1.1) !important;
+  }
+
+  @keyframes float-btn {
+    0%, 100% { transform: translateY(0); box-shadow: 0 8px 25px rgba(16,185,129,0.5); }
+    50% { transform: translateY(-6px); box-shadow: 0 14px 35px rgba(16,185,129,0.65); }
+  }
+
+  .floating-trial {
+    position: fixed;
+    bottom: 24px;
+    left: 24px;
+    z-index: 9999;
+    background: var(--gradient-cta);
+    color: white;
+    border-radius: 50px;
+    padding: 12px 22px;
+    font-size: 0.82rem;
+    font-weight: 700;
+    text-decoration: none;
+    box-shadow: 0 8px 25px rgba(79,70,229,0.5);
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    transition: all 0.2s;
+    font-family: 'Poppins', sans-serif;
+    border: none;
+    cursor: pointer;
+  }
+
+  .floating-trial:hover {
+    color: white;
+    transform: translateY(-2px);
+    box-shadow: 0 14px 35px rgba(79,70,229,0.65);
+  }
+
+  /* ========== OUTCOME ========== */
+  .outcome-section { padding: 80px 0; background: var(--bg-light); }
+
+  .outcome-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    padding: 14px 0;
+  }
+
+  .outcome-check {
+    width: 32px;
+    height: 32px;
+    background: var(--gradient-cta);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.8rem;
+    color: white;
+    flex-shrink: 0;
+  }
+
+  /* ========== SCHEDULE ========== */
+  .schedule-section { padding: 80px 0; background: white; }
+
+  .schedule-card {
+    background: var(--gradient-cta);
+    border-radius: 24px;
+    padding: 50px 40px;
+    text-align: center;
+    color: white;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .schedule-card::before {
+    content: '';
+    position: absolute;
+    top: -50px; right: -50px;
+    width: 200px; height: 200px;
+    background: rgba(255,255,255,0.05);
+    border-radius: 50%;
+  }
+
+  /* ========== RESPONSIVE ========== */
+  @media (max-width: 768px) {
+    .hero { padding: 80px 0 60px; }
+    .hero h1 { font-size: 2rem; }
+    .instructor-card { padding: 30px 20px; }
+    .form-card { padding: 30px 20px; }
+    .pricing-card { padding: 35px 24px; }
+    .floating-trial { display: none; }
+    .whatsapp-card { padding: 35px 20px; }
+  }
+
+  /* Navbar toggler */
+  .navbar-toggler { border-color: rgba(255,255,255,0.3); }
+  .navbar-toggler-icon { filter: invert(1); }
+</style>
+</head>
+<body>
+
+<!-- ======== FLOATING BUTTONS ======== -->
+<a href="https://chat.whatsapp.com/DwoXxY4hyRs4DPqVKjo7bg" target="_blank" class="floating-wa" title="Join WhatsApp Group">
+  <i class="fab fa-whatsapp"></i>
+</a>
+<a href="#lead-form" class="floating-trial">
+  <i class="fas fa-play-circle"></i> Book FREE Trial
+</a>
+
+<!-- ======== NAVBAR ======== -->
+<nav class="navbar navbar-expand-lg">
+  <div class="container">
+    <a class="navbar-brand" href="#">Speed16 <span>AI Academy</span></a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMain">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navMain">
+      <ul class="navbar-nav ms-auto gap-1 align-items-center">
+        <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+        <li class="nav-item"><a class="nav-link" href="#course">Course</a></li>
+        <li class="nav-item"><a class="nav-link" href="#syllabus">Syllabus</a></li>
+        <li class="nav-item"><a class="nav-link" href="#pricing">Fees</a></li>
+        <li class="nav-item"><a class="nav-link" href="#faq">FAQ</a></li>
+        <li class="nav-item"><a class="nav-link nav-cta" href="#lead-form">Book FREE Trial</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- ======== HERO ======== -->
+<section class="hero" id="home">
+  <div class="container position-relative">
+    <div class="row align-items-center gy-5">
+      <div class="col-lg-6" data-aos="fade-right" data-aos-duration="800">
+        <div class="hero-badge">🚀 Learn AI the Right Way</div>
+        <h1>Learn <span class="highlight">Python + AI</span> from Scratch</h1>
+        <p class="hero-sub">Live Online Classes for NRI School &amp; College Students</p>
+        <p class="hero-locations">USA &nbsp;•&nbsp; Canada &nbsp;•&nbsp; Europe &nbsp;•&nbsp; Age 10–18</p>
+        <div class="hero-pills">
+          <span class="hero-pill"><i class="fas fa-circle-dot"></i> Build Real AI Projects</span>
+          <span class="hero-pill"><i class="fas fa-circle-dot"></i> Learn from Industry Expert</span>
+          <span class="hero-pill"><i class="fas fa-circle-dot"></i> Interactive Live Sessions</span>
+          <span class="hero-pill"><i class="fas fa-circle-dot"></i> Certificate Included</span>
+        </div>
+        <div class="d-flex flex-wrap gap-3">
+          <a href="#lead-form" class="btn-primary-hero">
+            <i class="fas fa-play-circle"></i> Attend FREE Trial Class
+          </a>
+          <a href="https://chat.whatsapp.com/DwoXxY4hyRs4DPqVKjo7bg" target="_blank" class="btn-whatsapp">
+            <i class="fab fa-whatsapp"></i> Join WhatsApp Group
+          </a>
+        </div>
+      </div>
+      <div class="col-lg-6" data-aos="fade-left" data-aos-duration="1000">
+        <div class="hero-illustration">
+          <div class="hero-svg-wrap">
+            <svg viewBox="0 0 520 420" xmlns="http://www.w3.org/2000/svg" width="100%" style="max-width:520px">
+              <defs>
+                <linearGradient id="bg-g" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" style="stop-color:#4f46e5;stop-opacity:0.9"/>
+                  <stop offset="100%" style="stop-color:#7c3aed;stop-opacity:0.9"/>
+                </linearGradient>
+                <linearGradient id="screen-g" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" style="stop-color:#0f0c29"/>
+                  <stop offset="100%" style="stop-color:#302b63"/>
+                </linearGradient>
+                <linearGradient id="btn-g" x1="0%" y1="0%" x2="100%" y2="0%">
+                  <stop offset="0%" style="stop-color:#4f46e5"/>
+                  <stop offset="100%" style="stop-color:#7c3aed"/>
+                </linearGradient>
+                <filter id="glow">
+                  <feGaussianBlur stdDeviation="4" result="coloredBlur"/>
+                  <feMerge><feMergeNode in="coloredBlur"/><feMergeNode in="SourceGraphic"/></feMerge>
+                </filter>
+              </defs>
+              <!-- Background blob -->
+              <ellipse cx="260" cy="210" rx="220" ry="185" fill="url(#bg-g)" opacity="0.18" rx="80"/>
+              <!-- Laptop body -->
+              <rect x="80" y="120" width="360" height="220" rx="16" ry="16" fill="#1a1a2e" stroke="#4f46e5" stroke-width="2"/>
+              <!-- Screen -->
+              <rect x="96" y="134" width="328" height="178" rx="8" ry="8" fill="url(#screen-g)"/>
+              <!-- Code lines -->
+              <rect x="112" y="154" width="60" height="6" rx="3" fill="#818cf8" opacity="0.9"/>
+              <rect x="180" y="154" width="90" height="6" rx="3" fill="#06b6d4" opacity="0.8"/>
+              <rect x="112" y="168" width="40" height="6" rx="3" fill="#a78bfa" opacity="0.7"/>
+              <rect x="160" y="168" width="70" height="6" rx="3" fill="#f0abfc" opacity="0.7"/>
+              <rect x="238" y="168" width="50" height="6" rx="3" fill="#818cf8" opacity="0.6"/>
+              <rect x="128" y="182" width="80" height="6" rx="3" fill="#10b981" opacity="0.8"/>
+              <rect x="216" y="182" width="60" height="6" rx="3" fill="#f59e0b" opacity="0.7"/>
+              <rect x="112" y="196" width="100" height="6" rx="3" fill="#818cf8" opacity="0.6"/>
+              <rect x="128" y="210" width="50" height="6" rx="3" fill="#06b6d4" opacity="0.7"/>
+              <rect x="186" y="210" width="80" height="6" rx="3" fill="#10b981" opacity="0.6"/>
+              <rect x="112" y="224" width="70" height="6" rx="3" fill="#a78bfa" opacity="0.8"/>
+              <rect x="190" y="224" width="40" height="6" rx="3" fill="#f0abfc" opacity="0.5"/>
+              <rect x="128" y="238" width="90" height="6" rx="3" fill="#818cf8" opacity="0.7"/>
+              <rect x="112" y="252" width="55" height="6" rx="3" fill="#10b981" opacity="0.9"/>
+              <rect x="175" y="252" width="70" height="6" rx="3" fill="#f59e0b" opacity="0.7"/>
+              <rect x="253" y="252" width="45" height="6" rx="3" fill="#06b6d4" opacity="0.6"/>
+              <!-- Cursor blink -->
+              <rect x="112" y="266" width="8" height="14" rx="2" fill="#818cf8" opacity="0.9">
+                <animate attributeName="opacity" values="0.9;0;0.9" dur="1.2s" repeatCount="indefinite"/>
+              </rect>
+              <!-- Terminal prompt -->
+              <text x="112" y="294" fill="#10b981" font-family="monospace" font-size="10">$ python ai_project.py</text>
+              <!-- Run button in screen -->
+              <rect x="340" y="280" width="70" height="22" rx="11" fill="url(#btn-g)" filter="url(#glow)"/>
+              <text x="375" y="295" fill="white" font-family="'Poppins',sans-serif" font-size="9" text-anchor="middle" font-weight="600">▶  RUN</text>
+              <!-- Laptop base -->
+              <rect x="60" y="340" width="400" height="16" rx="6" fill="#111827"/>
+              <rect x="180" y="334" width="160" height="8" rx="4" fill="#1e1b4b"/>
+              <!-- Robot / AI icon floating -->
+              <circle cx="420" cy="80" r="38" fill="#1a1a2e" stroke="#4f46e5" stroke-width="2" filter="url(#glow)">
+                <animate attributeName="cy" values="80;70;80" dur="4s" repeatCount="indefinite"/>
+              </circle>
+              <circle cx="410" cy="73" r="5" fill="#818cf8"/>
+              <circle cx="430" cy="73" r="5" fill="#818cf8"/>
+              <rect x="405" y="84" width="30" height="4" rx="2" fill="#4f46e5"/>
+              <rect x="408" y="90" width="8" height="12" rx="4" fill="#4f46e5"/>
+              <rect x="424" y="90" width="8" height="12" rx="4" fill="#4f46e5"/>
+              <text x="420" y="68" fill="#a78bfa" font-family="monospace" font-size="9" text-anchor="middle">AI</text>
+              <!-- Python logo floating -->
+              <circle cx="78" cy="80" r="30" fill="#1a1a2e" stroke="#f59e0b" stroke-width="2">
+                <animate attributeName="cy" values="80;88;80" dur="5s" repeatCount="indefinite"/>
+              </circle>
+              <text x="78" y="86" fill="#f59e0b" font-family="monospace" font-size="16" text-anchor="middle" font-weight="bold">🐍</text>
+              <!-- Floating badge: Certificate -->
+              <rect x="370" y="340" width="100" height="36" rx="12" fill="#10b981" opacity="0.9">
+                <animate attributeName="opacity" values="0.9;0.7;0.9" dur="3s" repeatCount="indefinite"/>
+              </rect>
+              <text x="420" y="362" fill="white" font-family="'Poppins',sans-serif" font-size="9" text-anchor="middle" font-weight="700">🏆 Certificate</text>
+              <!-- Floating badge: Live -->
+              <rect x="50" y="340" width="80" height="36" rx="12" fill="#ef4444" opacity="0.9">
+                <animate attributeName="opacity" values="0.9;0.7;0.9" dur="2s" repeatCount="indefinite"/>
+              </rect>
+              <text x="90" y="362" fill="white" font-family="'Poppins',sans-serif" font-size="9" text-anchor="middle" font-weight="700">🔴 LIVE</text>
+            </svg>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ======== STATS STRIP ======== -->
+<section class="stats-strip">
+  <div class="container">
+    <div class="row g-4 text-center">
+      <div class="col-6 col-md-3" data-aos="fade-up">
+        <div class="stat-item">
+          <span class="stat-number counter" data-target="15">0</span><span class="stat-number">+</span>
+          <div class="stat-label">Years of Experience</div>
+        </div>
+      </div>
+      <div class="col-6 col-md-3" data-aos="fade-up" data-aos-delay="100">
+        <div class="stat-item">
+          <span class="stat-number counter" data-target="500">0</span><span class="stat-number">+</span>
+          <div class="stat-label">Students Trained</div>
+        </div>
+      </div>
+      <div class="col-6 col-md-3" data-aos="fade-up" data-aos-delay="200">
+        <div class="stat-item">
+          <span class="stat-number counter" data-target="100">0</span><span class="stat-number">%</span>
+          <div class="stat-label">Practical Learning</div>
+        </div>
+      </div>
+      <div class="col-6 col-md-3" data-aos="fade-up" data-aos-delay="300">
+        <div class="stat-item">
+          <span class="stat-number counter" data-target="10">0</span><span class="stat-number">+</span>
+		            <div class="stat-label">Countries</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ======== TRUST INDICATORS ======== -->
+<section class="trust-section">
+  <div class="container">
+    <div class="text-center mb-5" data-aos="fade-up">
+      <div class="section-label">Why Parents Trust Us</div>
+      <h2 class="section-title">Everything Your Child Needs to Succeed</h2>
+    </div>
+    <div class="row g-4">
+      <div class="col-6 col-md-4 col-lg-2" data-aos="fade-up" data-aos-delay="0">
+        <div class="trust-card">
+          <div class="trust-icon"><i class="fas fa-award"></i></div>
+          <h5>15+ Years</h5>
+          <p>Industry Experience</p>
+        </div>
+      </div>
+      <div class="col-6 col-md-4 col-lg-2" data-aos="fade-up" data-aos-delay="60">
+        <div class="trust-card">
+          <div class="trust-icon"><i class="fas fa-users"></i></div>
+          <h5>500+ Students</h5>
+          <p>Successfully Trained</p>
+        </div>
+      </div>
+      <div class="col-6 col-md-4 col-lg-2" data-aos="fade-up" data-aos-delay="120">
+        <div class="trust-card">
+          <div class="trust-icon"><i class="fas fa-video"></i></div>
+          <h5>Live Sessions</h5>
+          <p>Interactive via Zoom</p>
+        </div>
+      </div>
+      <div class="col-6 col-md-4 col-lg-2" data-aos="fade-up" data-aos-delay="180">
+        <div class="trust-card">
+          <div class="trust-icon"><i class="fas fa-play-circle"></i></div>
+          <h5>Recordings</h5>
+          <p>All Sessions Included</p>
+        </div>
+      </div>
+      <div class="col-6 col-md-4 col-lg-2" data-aos="fade-up" data-aos-delay="240">
+        <div class="trust-card">
+          <div class="trust-icon"><i class="fas fa-certificate"></i></div>
+          <h5>Certificate</h5>
+          <p>On Completion</p>
+        </div>
+      </div>
+      <div class="col-6 col-md-4 col-lg-2" data-aos="fade-up" data-aos-delay="300">
+        <div class="trust-card">
+          <div class="trust-icon"><i class="fas fa-child"></i></div>
+          <h5>Beginner OK</h5>
+          <p>Zero Prior Coding</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ======== ABOUT INSTRUCTOR ======== -->
+<section class="instructor-section" id="about">
+  <div class="container">
+    <div class="text-center mb-5" data-aos="fade-up">
+      <div class="section-label">Meet Your Instructor</div>
+      <h2 class="section-title">Learn from the Best</h2>
+    </div>
+    <div class="row justify-content-center">
+      <div class="col-lg-10" data-aos="fade-up" data-aos-delay="100">
+        <div class="instructor-card">
+          <div class="row align-items-center gy-4">
+            <div class="col-md-4 text-center">
+              <div class="instructor-photo">
+                <i class="fas fa-user-tie"></i>
+              </div>
+              <a href="https://drive.google.com/file/d/1pWDAF8T5lY_UkA2B__5AoAeBTkEWQGAm/view?usp=sharing" target="_blank" class="btn-primary-hero mt-3 d-inline-flex" style="font-size:0.85rem; padding:10px 22px;">
+                <i class="fas fa-external-link-alt"></i> View Instructor Profile
+              </a>
+            </div>
+            <div class="col-md-8">
+              <div class="instructor-name">Mr. Chaitanya A. Patil</div>
+              <div class="instructor-title">BE · MTech · PhD*</div>
+              <div class="instructor-title">Author, Trainer &amp; Director · Speed16 AI Academy</div>
+              <div class="mt-3 mb-3">
+                <span class="instructor-badge">🏆 15+ Years Experience</span>
+                <span class="instructor-badge">📚 Published Author</span>
+                <span class="instructor-badge">🤖 AI Expert</span>
+                <span class="instructor-badge">🌍 Global Trainer</span>
+                <span class="instructor-badge">🐍 Python Specialist</span>
+              </div>
+              <p style="color:rgba(255,255,255,0.75); font-size:0.92rem; line-height:1.7;">
+                Mr. Chaitanya Patil has been teaching Python, AI, and Computer Science for over 15 years. He has trained 500+ students across India, USA, Canada, and Europe. As an author, trainer, and director of Speed16 AI Academy, he brings real-world industry experience into every live class.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ======== COURSE DETAILS ======== -->
+<section class="course-section" id="course">
+  <div class="container">
+    <div class="text-center mb-5" data-aos="fade-up">
+      <div class="section-label">Course Details</div>
+      <h2 class="section-title">Python + AI Complete Course</h2>
+      <p class="section-subtitle mt-2">Everything you need to go from zero to building real AI projects</p>
+    </div>
+    <div class="row g-4">
+      <div class="col-lg-6" data-aos="fade-right">
+        <div class="course-main-card h-100">
+          <h4 style="font-weight:800; color:var(--text-dark); margin-bottom:20px;">📋 Course Overview</h4>
+          <div class="course-detail-item">
+            <div class="detail-icon"><i class="fas fa-graduation-cap"></i></div>
+            <div>
+              <div class="detail-label">Course Name</div>
+              <div class="detail-value">Python + Artificial Intelligence</div>
+            </div>
+          </div>
+          <div class="course-detail-item">
+            <div class="detail-icon"><i class="fas fa-clock"></i></div>
+            <div>
+              <div class="detail-label">Duration</div>
+              <div class="detail-value">8 Weeks · 24 Hours · 3 Classes/Week</div>
+            </div>
+          </div>
+          <div class="course-detail-item">
+            <div class="detail-icon"><i class="fas fa-laptop"></i></div>
+            <div>
+              <div class="detail-label">Mode</div>
+              <div class="detail-value">Live Online Interactive via Zoom</div>
+            </div>
+          </div>
+          <div class="course-detail-item">
+            <div class="detail-icon"><i class="fas fa-video"></i></div>
+            <div>
+              <div class="detail-label">Session Recordings</div>
+              <div class="detail-value">✅ Yes</div>
+            </div>
+          </div>
+          <div class="course-detail-item">
+            <div class="detail-icon"><i class="fas fa-certificate"></i></div>
+            <div>
+              <div class="detail-label">Certificate</div>
+              <div class="detail-value">✅ Yes, on Completion</div>
+            </div>
+          </div>
+          <div class="course-detail-item">
+            <div class="detail-icon"><i class="fas fa-check-circle"></i></div>
+            <div>
+              <div class="detail-label">Prerequisites</div>
+              <div class="detail-value">None — We teach everything from scratch!</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-6" data-aos="fade-left">
+        <div class="course-main-card h-100">
+          <h4 style="font-weight:800; color:var(--text-dark); margin-bottom:20px;">📚 Study Materials Included</h4>
+          <div class="row g-3">
+            <div class="col-6">
+              <div style="background:var(--bg-light); border-radius:14px; padding:18px 16px; border:1px solid rgba(79,70,229,0.1);">
+                <div style="font-size:1.8rem; margin-bottom:8px;">📖</div>
+                <div style="font-weight:700; font-size:0.9rem;">eBook</div>
+                <div style="font-size:0.78rem; color:var(--text-muted);">Comprehensive course book</div>
+              </div>
+            </div>
+            <div class="col-6">
+              <div style="background:var(--bg-light); border-radius:14px; padding:18px 16px; border:1px solid rgba(79,70,229,0.1);">
+                <div style="font-size:1.8rem; margin-bottom:8px;">🎬</div>
+                <div style="font-weight:700; font-size:0.9rem;">Video Course</div>
+                <div style="font-size:0.78rem; color:var(--text-muted);">Watch Anytime</div>
+              </div>
+            </div>
+            <div class="col-6">
+              <div style="background:var(--bg-light); border-radius:14px; padding:18px 16px; border:1px solid rgba(79,70,229,0.1);">
+                <div style="font-size:1.8rem; margin-bottom:8px;">📝</div>
+                <div style="font-weight:700; font-size:0.9rem;">Notes & Programs</div>
+                <div style="font-size:0.78rem; color:var(--text-muted);">Every session covered</div>
+              </div>
+            </div>
+            <div class="col-6">
+              <div style="background:var(--bg-light); border-radius:14px; padding:18px 16px; border:1px solid rgba(79,70,229,0.1);">
+                <div style="font-size:1.8rem; margin-bottom:8px;">🤖</div>
+                <div style="font-weight:700; font-size:0.9rem;">AI Projects</div>
+                <div style="font-size:0.78rem; color:var(--text-muted);">Real-world applications</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ======== SYLLABUS ======== -->
+<section class="syllabus-section" id="syllabus">
+  <div class="container">
+    <div class="text-center mb-5" data-aos="fade-up">
+      <div class="section-label">Course Syllabus</div>
+      <h2 class="section-title">What You'll Learn, Week by Week</h2>
+    </div>
+    <div class="row">
+      <div class="col-lg-6" data-aos="fade-right">
+        <div class="syllabus-timeline">
+          <div class="syllabus-item">
+            <div class="syllabus-card">
+              <div class="syllabus-num">Module 01</div>
+              <div class="syllabus-title">Introduction to Python</div>
+              <div class="syllabus-desc">Setup, variables, input/output, first programs</div>
+            </div>
+          </div>
+          <div class="syllabus-item">
+            <div class="syllabus-card">
+              <div class="syllabus-num">Module 02</div>
+              <div class="syllabus-title">Data Types & Operators</div>
+              <div class="syllabus-desc">Strings, numbers, lists, dictionaries, arithmetic & logical operators</div>
+            </div>
+          </div>
+          <div class="syllabus-item">
+            <div class="syllabus-card">
+              <div class="syllabus-num">Module 03</div>
+              <div class="syllabus-title">Decision Making & Loops</div>
+              <div class="syllabus-desc">if/else, while, for loops, nested structures</div>
+            </div>
+          </div>
+          <div class="syllabus-item">
+            <div class="syllabus-card">
+              <div class="syllabus-num">Module 04</div>
+              <div class="syllabus-title">Functions</div>
+              <div class="syllabus-desc">Defining functions, parameters, return values, scope</div>
+            </div>
+          </div>
+          <div class="syllabus-item">
+            <div class="syllabus-card">
+              <div class="syllabus-num">Module 05</div>
+              <div class="syllabus-title">GUI with Tkinter</div>
+              <div class="syllabus-desc">Build desktop apps with buttons, forms, and windows</div>
+            </div>
+          </div>
+          <div class="syllabus-item" style="padding-bottom:0">
+            <div class="syllabus-card">
+              <div class="syllabus-num">Module 06</div>
+              <div class="syllabus-title">Python Projects</div>
+              <div class="syllabus-desc">Mini projects applying all Python concepts learned</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-6 mt-4 mt-lg-0" data-aos="fade-left">
+        <div class="syllabus-timeline">
+          <div class="syllabus-item">
+            <div class="syllabus-card">
+              <div class="syllabus-num">Module 07</div>
+              <div class="syllabus-title">Artificial Intelligence</div>
+              <div class="syllabus-desc">AI concepts, problem-solving, algorithms, applications</div>
+            </div>
+          </div>
+          <div class="syllabus-item">
+            <div class="syllabus-card">
+              <div class="syllabus-num">Module 08</div>
+              <div class="syllabus-title">Prompt Engineering</div>
+              <div class="syllabus-desc">Write effective AI prompts, work with ChatGPT and modern LLMs</div>
+            </div>
+          </div>
+          <div class="syllabus-item">
+            <div class="syllabus-card">
+              <div class="syllabus-num">Module 09</div>
+              <div class="syllabus-title">Machine Learning Basics</div>
+              <div class="syllabus-desc">Supervised learning, datasets, predictions</div>
+            </div>
+          </div>
+          <div class="syllabus-item">
+            <div class="syllabus-card">
+              <div class="syllabus-num">Module 10</div>
+              <div class="syllabus-title">AI Projects</div>
+              <div class="syllabus-desc">Build real AI applications — chatbots, classifiers, and more</div>
+            </div>
+          </div>
+          <div class="syllabus-item">
+            <div class="syllabus-card" style="background:rgba(79,70,229,0.08); border-color:rgba(79,70,229,0.2);">
+              <div class="syllabus-num" style="color:var(--secondary);">🏆 Bonus</div>
+              <div class="syllabus-title">Certificate &amp; Portfolio</div>
+              <div class="syllabus-desc">Complete portfolio of projects + official certificate of completion</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ======== SKILLS ======== -->
+<section class="skills-section">
+  <div class="container">
+    <div class="text-center mb-5" data-aos="fade-up">
+      <div class="section-label" style="background:rgba(255,255,255,0.1); color:rgba(255,255,255,0.9);">Skills You'll Gain</div>
+      <h2 class="section-title" style="color:white;">Future-Ready Skills for the AI Era</h2>
+    </div>
+    <div class="text-center" data-aos="fade-up" data-aos-delay="100">
+      <span class="skill-chip"><i class="fas fa-check"></i> Python Programming</span>
+      <span class="skill-chip"><i class="fas fa-check"></i> Artificial Intelligence</span>
+      <span class="skill-chip"><i class="fas fa-check"></i> Prompt Engineering</span>
+      <span class="skill-chip"><i class="fas fa-check"></i> Machine Learning Basics</span>
+      <span class="skill-chip"><i class="fas fa-check"></i> GUI with Tkinter</span>
+      <span class="skill-chip"><i class="fas fa-check"></i> Build AI Applications</span>
+      <span class="skill-chip"><i class="fas fa-check"></i> Real Projects</span>
+      <span class="skill-chip"><i class="fas fa-check"></i> Coding Logic</span>
+      <span class="skill-chip"><i class="fas fa-check"></i> Problem Solving</span>
+      <span class="skill-chip"><i class="fas fa-check"></i> Future-Ready Skills</span>
+    </div>
+  </div>
+</section>
+
+<!-- ======== LEARNING OUTCOMES ======== -->
+<section class="outcome-section">
+  <div class="container">
+    <div class="text-center mb-5" data-aos="fade-up">
+      <div class="section-label">Learning Outcomes</div>
+      <h2 class="section-title">What Your Child Will Achieve</h2>
+    </div>
+    <div class="row justify-content-center">
+      <div class="col-lg-8" data-aos="fade-up" data-aos-delay="100">
+        <div class="outcome-item">
+          <div class="outcome-check"><i class="fas fa-check"></i></div>
+          <div><strong>Write Python programs confidently</strong> — from basic scripts to full applications</div>
+        </div>
+        <div class="outcome-item">
+          <div class="outcome-check"><i class="fas fa-check"></i></div>
+          <div><strong>Build GUI desktop applications</strong> using Python's Tkinter library</div>
+        </div>
+        <div class="outcome-item">
+          <div class="outcome-check"><i class="fas fa-check"></i></div>
+          <div><strong>Understand AI fundamentals</strong> and how modern AI systems work</div>
+        </div>
+        <div class="outcome-item">
+          <div class="outcome-check"><i class="fas fa-check"></i></div>
+          <div><strong>Create Machine Learning projects</strong> using real datasets</div>
+        </div>
+        <div class="outcome-item">
+          <div class="outcome-check"><i class="fas fa-check"></i></div>
+          <div><strong>Build practical Python + AI projects</strong> for their portfolio</div>
+        </div>
+        <div class="outcome-item">
+          <div class="outcome-check"><i class="fas fa-check"></i></div>
+          <div><strong>Continue advanced AI learning</strong> with a solid, structured foundation</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ======== COURSE FEATURES ======== -->
+<section class="features-section">
+  <div class="container">
+    <div class="text-center mb-5" data-aos="fade-up">
+      <div class="section-label">Course Features</div>
+      <h2 class="section-title">Built for Student Success</h2>
+    </div>
+    <div class="row g-4">
+      <div class="col-6 col-md-4 col-lg-3" data-aos="fade-up" data-aos-delay="0">
+        <div class="feature-card">
+          <div class="feature-icon-wrap" style="background:linear-gradient(135deg,#4f46e5,#7c3aed)"><i class="fas fa-broadcast-tower"></i></div>
+          <h5>Live Interactive Classes</h5>
+          <p>Ask questions in real time, get instant feedback</p>
+        </div>
+      </div>
+      <div class="col-6 col-md-4 col-lg-3" data-aos="fade-up" data-aos-delay="60">
+        <div class="feature-card">
+          <div class="feature-icon-wrap" style="background:linear-gradient(135deg,#06b6d4,#0891b2)"><i class="fas fa-infinity"></i></div>
+          <h5>Study Materials</h5>
+          <p>Access all notes and resources</p>
+        </div>
+      </div>
+      <div class="col-6 col-md-4 col-lg-3" data-aos="fade-up" data-aos-delay="120">
+        <div class="feature-card">
+          <div class="feature-icon-wrap" style="background:linear-gradient(135deg,#10b981,#059669)"><i class="fas fa-play"></i></div>
+          <h5>Session Recordings</h5>
+          <p>Rewatch every class, never miss a concept</p>
+        </div>
+      </div>
+      <div class="col-6 col-md-4 col-lg-3" data-aos="fade-up" data-aos-delay="180">
+        <div class="feature-card">
+          <div class="feature-icon-wrap" style="background:linear-gradient(135deg,#f59e0b,#d97706)"><i class="fas fa-question-circle"></i></div>
+          <h5>Doubt Solving</h5>
+          <p>Dedicated Q&amp;A sessions after each class</p>
+        </div>
+      </div>
+      <div class="col-6 col-md-4 col-lg-3" data-aos="fade-up" data-aos-delay="0">
+        <div class="feature-card">
+          <div class="feature-icon-wrap" style="background:linear-gradient(135deg,#ec4899,#be185d)"><i class="fas fa-keyboard"></i></div>
+          <h5>Hands-on Coding</h5>
+          <p>Code along every session, learn by doing</p>
+        </div>
+      </div>
+      <div class="col-6 col-md-4 col-lg-3" data-aos="fade-up" data-aos-delay="60">
+        <div class="feature-card">
+          <div class="feature-icon-wrap" style="background:linear-gradient(135deg,#8b5cf6,#6d28d9)"><i class="fas fa-project-diagram"></i></div>
+          <h5>Mini &amp; AI Projects</h5>
+          <p>Build a portfolio of real-world applications</p>
+        </div>
+      </div>
+      <div class="col-6 col-md-4 col-lg-3" data-aos="fade-up" data-aos-delay="120">
+        <div class="feature-card">
+          <div class="feature-icon-wrap" style="background:linear-gradient(135deg,#f43f5e,#e11d48)"><i class="fas fa-certificate"></i></div>
+          <h5>Certificate</h5>
+          <p>Official certificate on course completion</p>
+        </div>
+      </div>
+      <div class="col-6 col-md-4 col-lg-3" data-aos="fade-up" data-aos-delay="180">
+        <div class="feature-card">
+          <div class="feature-icon-wrap" style="background:linear-gradient(135deg,#14b8a6,#0f766e)"><i class="fas fa-calendar-alt"></i></div>
+          <h5>Flexible Schedule</h5>
+          <p>Batch timings set to suit your timezone</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ======== SCHEDULE ======== -->
+<section class="schedule-section">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-lg-8" data-aos="fade-up">
+        <div class="schedule-card">
+          <div style="font-size:2.5rem; margin-bottom:14px;">📅</div>
+          <h2 style="font-size:1.8rem; font-weight:800; margin-bottom:12px;">Flexible Batch Schedule</h2>
+          <p style="font-size:1rem; opacity:0.85; margin-bottom:28px;">
+            Attend a <strong>FREE Trial Class</strong> first. If you wish to continue, contact us on WhatsApp. 
+            The batch schedule will be finalized according to your convenient time slots.
+          </p>
+          <div class="d-flex flex-wrap justify-content-center gap-3">
+            <a href="#lead-form" class="btn-primary-hero" style="background:rgba(255,255,255,0.2); box-shadow:none; border:2px solid rgba(255,255,255,0.4);">
+              <i class="fas fa-calendar-check"></i> Book Free Trial
+            </a>
+            <a href="https://chat.whatsapp.com/DwoXxY4hyRs4DPqVKjo7bg" target="_blank" class="btn-whatsapp">
+              <i class="fab fa-whatsapp"></i> WhatsApp Us
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ======== PRICING ======== -->
+<section class="pricing-section" id="pricing">
+  <div class="container">
+    <div class="text-center mb-5" data-aos="fade-up">
+      <div class="section-label">Course Fees</div>
+      <h2 class="section-title">Simple, Transparent Pricing</h2>
+      <p class="section-subtitle mt-2">No hidden charges. Pay only if you love the trial class.</p>
+    </div>
+    <div class="row justify-content-center">
+      <div class="col-lg-5 col-md-8" data-aos="fade-up" data-aos-delay="100">
+        <div class="pricing-card">
+          <div class="price-badge">🔥 Limited-Time Offer</div>
+          <div class="price-original">US$199</div>
+          <div class="price-main"><sup>US$</sup>129</div>
+          <div class="price-inr">or ₹11,999</div>
+          <ul class="pricing-includes">
+            <li><i class="fas fa-check-circle"></i> Complete Python + AI Course (8 Weeks)</li>
+            <li><i class="fas fa-check-circle"></i> eBook, Notes &amp; Programs</li>
+            <li><i class="fas fa-check-circle"></i> Session Recordings</li>
+            <li><i class="fas fa-check-circle"></i> Certificate of Completion</li>
+            <li><i class="fas fa-check-circle"></i> Mini Python &amp; AI Projects</li>
+            <li><i class="fas fa-check-circle"></i> Doubt Solving Sessions</li>
+			            <li><i class="fas fa-check-circle"></i>No recurrsing Payment. Pay only once.</li>
+          </ul>
+          <a href="#lead-form" class="btn-primary-hero d-flex justify-content-center">
+            <i class="fas fa-play-circle"></i> Attend FREE Trial First
+          </a>
+          <div class="price-note">💡 Pay only if you like the class. No commitment required.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ======== TESTIMONIALS ======== -->
+<section class="testimonials-section">
+  <div class="container">
+    <div class="text-center mb-5" data-aos="fade-up">
+      <div class="section-label">Student Reviews</div>
+      <h2 class="section-title">What Parents &amp; Students Say</h2>
+    </div>
+    <div class="row g-4">
+      <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="0">
+        <div class="testimonial-card">
+          <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+          <p class="testimonial-text">"My son was completely new to coding and within 4 weeks he's building Python programs! Mr. Patil explains everything so clearly. Best decision we made this year."</p>
+          <div class="testimonial-author">
+            <div class="author-avatar" style="background:linear-gradient(135deg,#4f46e5,#7c3aed)">S</div>
+            <div>
+              <div class="author-name">Sunita Sharma</div>
+              <div class="author-role">Parent · New Jersey, USA</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="100">
+        <div class="testimonial-card">
+          <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+          <p class="testimonial-text">"I joined for Python and ended up building an AI chatbot project! The live sessions are so engaging. The recordings help me revise anytime. Highly recommend to every student."</p>
+          <div class="testimonial-author">
+            <div class="author-avatar" style="background:linear-gradient(135deg,#10b981,#059669)">A</div>
+            <div>
+              <div class="author-name">Arjun Mehta</div>
+              <div class="author-role">Student (Age 16) · Toronto, Canada</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="200">
+        <div class="testimonial-card">
+          <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+          <p class="testimonial-text">"We attended the free trial and were so impressed that we enrolled immediately. The instructor's experience truly stands out. My daughter earned her certificate and is now confidently exploring Machine Learning!"</p>
+          <div class="testimonial-author">
+            <div class="author-avatar" style="background:linear-gradient(135deg,#f59e0b,#d97706)">P</div>
+            <div>
+              <div class="author-name">Priya Nair</div>
+              <div class="author-role">Parent · London, UK</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ======== FAQ ======== -->
+<section class="faq-section" id="faq">
+  <div class="container">
+    <div class="text-center mb-5" data-aos="fade-up">
+      <div class="section-label">Common Questions</div>
+      <h2 class="section-title">Frequently Asked Questions</h2>
+    </div>
+    <div class="row justify-content-center">
+      <div class="col-lg-8" data-aos="fade-up" data-aos-delay="100">
+        <div class="faq-item">
+          <button class="faq-question" onclick="toggleFaq(this)">
+            Who can join this course? <i class="fas fa-chevron-down faq-arrow"></i>
+          </button>
+          <div class="faq-answer">Any school or college student aged 10–18 living in USA, Canada, or Europe. The course is designed for NRI students. Parents of students are welcome to sit in on trial classes too!</div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question" onclick="toggleFaq(this)">
+            Do I need prior coding experience? <i class="fas fa-chevron-down faq-arrow"></i>
+          </button>
+          <div class="faq-answer">Absolutely not! This course is designed for complete beginners. We start from the very basics — installation, first program — and build up systematically. No prior coding knowledge is required.</div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question" onclick="toggleFaq(this)">
+            Will session recordings be available? <i class="fas fa-chevron-down faq-arrow"></i>
+          </button>
+          <div class="faq-answer">Yes! Every live class is recorded and shared with students. You can rewatch at any time, as many times as you need.</div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question" onclick="toggleFaq(this)">
+            Will I receive a certificate? <i class="fas fa-chevron-down faq-arrow"></i>
+          </button>
+          <div class="faq-answer">Yes. Upon completing the course and projects, every student receives an official Certificate of Completion from Speed16 AI Academy.</div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question" onclick="toggleFaq(this)">
+            How do I attend the trial class? <i class="fas fa-chevron-down faq-arrow"></i>
+          </button>
+          <div class="faq-answer">Fill out the form on this page or click "Book FREE Trial Class." You'll receive the Zoom link and schedule via WhatsApp or email. The trial class is 100% free with no obligation.</div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question" onclick="toggleFaq(this)">
+            What software is required? <i class="fas fa-chevron-down faq-arrow"></i>
+          </button>
+          <div class="faq-answer">You only need a laptop or desktop with a stable internet connection. No software installation is required. We'll guide you through setting up Google Colab during the free trial class. It takes less than a minute to get started.</div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question" onclick="toggleFaq(this)">
+            What timezone are the classes held in? <i class="fas fa-chevron-down faq-arrow"></i>
+          </button>
+          <div class="faq-answer">Batch timings are flexible and set to suit your timezone — EST, CST, PST for USA/Canada, or GMT/CET for Europe. Your schedule is confirmed before you pay.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ======== WHATSAPP SECTION ======== -->
+<section class="whatsapp-section">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-lg-8" data-aos="fade-up">
+        <div class="whatsapp-card">
+          <div class="whatsapp-icon-wrap">
+            <i class="fab fa-whatsapp"></i>
+          </div>
+          <h2 style="color:white; font-size:2rem; font-weight:800; margin-bottom:12px;">Join Our Official WhatsApp Group</h2>
+          <p style="color:rgba(255,255,255,0.8); font-size:1rem; margin-bottom:28px;">Stay updated with batch info, trial class schedules, study tips &amp; announcements</p>
+          <div class="d-flex flex-wrap justify-content-center mb-28">
+            <span class="wa-benefit"><i class="fas fa-check-circle"></i> Batch Updates</span>
+            <span class="wa-benefit"><i class="fas fa-check-circle"></i> Trial Class Info</span>
+            <span class="wa-benefit"><i class="fas fa-check-circle"></i> Study Tips</span>
+            <span class="wa-benefit"><i class="fas fa-check-circle"></i> Announcements</span>
+          </div>
+          <div class="mt-4">
+            <a href="https://chat.whatsapp.com/DwoXxY4hyRs4DPqVKjo7bg" target="_blank" class="btn-whatsapp-big">
+              <i class="fab fa-whatsapp"></i> Join WhatsApp Group — Free
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ======== LEAD FORM ======== -->
+<section class="form-section" id="lead-form">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-lg-8">
+        <div class="form-card" data-aos="fade-up">
+          <div class="text-center mb-4">
+
+
+
+<form id="leadForm" onsubmit="sendLeadToWhatsApp(); return false;">
+    <div class="row g-4">
+
+        <div class="col-md-6">
+            <label class="form-label">Student Name *</label>
+            <input type="text" class="form-control" id="studentName"
+                placeholder="Enter student's full name" required>
+        </div>
+
+        <div class="col-md-6">
+            <label class="form-label">Parent Name *</label>
+            <input type="text" class="form-control" id="parentName"
+                placeholder="Enter parent's full name" required>
+        </div>
+
+        <div class="col-md-6">
+            <label class="form-label">Student Age *</label>
+            <input type="number" class="form-control" id="age"
+                placeholder="Age" min="8" max="100" required>
+        </div>
+
+        <div class="col-md-6">
+            <label class="form-label">Country *</label>
+            <select class="form-select" id="country" required>
+                <option value="">Select Country</option>
+				<option>USA</option>
+                <option>Canada</option>
+                <option>UK</option>
+				<option>India</option>
+                <option>Germany</option>
+                <option>France</option>
+                <option>Netherlands</option>
+                <option>Australia</option>
+                <option>UAE</option>
+                <option>Others</option>
+            </select>
+        </div>
+
+
+        <div class="col-md-6">
+            <label class="form-label">Email Address *</label>
+            <input type="email" class="form-control" id="email"
+                placeholder="your@email.com" required>
+        </div>
+
+        <div class="col-md-6">
+            <label class="form-label">WhatsApp Number *</label>
+            <input type="tel" class="form-control" id="phone"
+                placeholder="+1 (555) 000-0000" required>
+        </div>
+
+        <div class="col-md-6">
+            <label class="form-label">Interested Course</label>
+            <select class="form-select" id="courses">
+                <option>Python + AI (School/College Students)</option>
+                <option>Java Programming</option>
+                <option>Robotics</option>
+                <option>AP Computer Science (CSP)</option>
+                <option>AP Computer Science A (CSA)</option>
+                <option>Python + ML + Agentic AI</option>
+            </select>
+        </div>
+
+        <div class="col-md-6">
+            <label class="form-label">Preferred Class Time</label>
+            <select class="form-select" id="classTime">
+                <option>Morning (6–9 AM local time)</option>
+                <option>Afternoon (12–3 PM local time)</option>
+                <option>Evening (5–8 PM local time)</option>
+                <option>Night (8–10 PM local time)</option>
+                <option>Weekend only</option>
+            </select>
+        </div>
+
+
+        <div class="col-12">
+            <button type="submit" class="btn-submit">
+                <i class="fas fa-rocket"></i>
+                Book FREE Trial Class — No Payment Required
+            </button>
+        </div>
+
+    </div>
+</form>
+
+
+
+
+
+
+
+
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ======== OTHER COURSES ======== -->
+<section class="courses-section">
+  <div class="container">
+    <div class="text-center mb-5" data-aos="fade-up">
+      <div class="section-label">More Courses</div>
+      <h2 class="section-title">Live Online Courses</h2>
+    </div>
+    <div class="row g-4">
+      <div class="col-6 col-md-4 col-lg-2" data-aos="fade-up" data-aos-delay="0">
+        <div class="course-card" style="background:#f0f1ff; ::before{background:var(--primary)}">
+          <style>.cc1::before{background:linear-gradient(90deg,#4f46e5,#7c3aed)!important}</style>
+          <span class="course-icon">🐍</span>
+          <h5>Python + AI</h5>
+          <p>For beginners age 10+</p>
+        </div>
+      </div>
+      <div class="col-6 col-md-4 col-lg-2" data-aos="fade-up" data-aos-delay="60">
+        <div class="course-card" style="background:#fff7ed;">
+          <span class="course-icon">☕</span>
+          <h5>Java Programming</h5>
+          <p>Object-oriented fundamentals</p>
+        </div>
+      </div>
+      <div class="col-6 col-md-4 col-lg-2" data-aos="fade-up" data-aos-delay="120">
+        <div class="course-card" style="background:#f0fdf4;">
+          <span class="course-icon">🤖</span>
+          <h5>Robotics</h5>
+          <p>Build &amp; program robots</p>
+        </div>
+      </div>
+      <div class="col-6 col-md-4 col-lg-2" data-aos="fade-up" data-aos-delay="180">
+        <div class="course-card" style="background:#fdf4ff;">
+          <span class="course-icon">🎓</span>
+          <h5>AP CSP</h5>
+          <p>AP Computer Science Principles</p>
+        </div>
+      </div>
+      <div class="col-6 col-md-4 col-lg-2" data-aos="fade-up" data-aos-delay="240">
+        <div class="course-card" style="background:#eff6ff;">
+          <span class="course-icon">💻</span>
+          <h5>AP CSA</h5>
+          <p>AP Computer Science A</p>
+        </div>
+      </div>
+      <div class="col-6 col-md-4 col-lg-2" data-aos="fade-up" data-aos-delay="300">
+        <div class="course-card" style="background:#fef9ec;">
+          <span class="course-icon">⚡</span>
+          <h5>Python + ML + Agentic AI</h5>
+          <p>For IT aspirants &amp; professionals</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ======== FREE COURSES ======== -->
+<section class="free-section">
+  <div class="container">
+    <div class="text-center mb-5" data-aos="fade-up">
+      <div class="section-label">Bonus for Enrolled Students</div>
+      <h2 class="section-title">FREE Courses Included</h2>
+    </div>
+    <div class="row g-4 justify-content-center">
+      <div class="col-md-4" data-aos="fade-up" data-aos-delay="0">
+        <div class="free-card">
+          <div class="free-badge">FREE</div>
+          <div style="font-size:2.5rem; margin:20px 0 14px;">🔢</div>
+          <h5 style="font-weight:700; font-size:1.05rem;">Vedic Mathematics</h5>
+          <p style="color:var(--text-muted); font-size:0.85rem; margin-top:8px;">Ancient techniques for lightning-fast mental math and calculation tricks</p>
+        </div>
+      </div>
+      <div class="col-md-4" data-aos="fade-up" data-aos-delay="100">
+        <div class="free-card">
+          <div class="free-badge">FREE</div>
+          <div style="font-size:2.5rem; margin:20px 0 14px;">🧊</div>
+          <h5 style="font-weight:700; font-size:1.05rem;">Rubik's Cube Mastery</h5>
+          <p style="color:var(--text-muted); font-size:0.85rem; margin-top:8px;">Learn to solve the classic Rubik's Cube using proven algorithms</p>
+        </div>
+      </div>
+      <div class="col-md-4" data-aos="fade-up" data-aos-delay="200">
+        <div class="free-card">
+          <div class="free-badge">FREE</div>
+          <div style="font-size:2.5rem; margin:20px 0 14px;">🏛️</div>
+          <h5 style="font-weight:700; font-size:1.05rem;">Indian History &amp; Culture</h5>
+          <p style="color:var(--text-muted); font-size:0.85rem; margin-top:8px;">Awareness course on India's rich heritage, history &amp; cultural roots</p>
+        </div>
+      </div>
+    </div>
+    <p class="text-center mt-3" style="color:var(--text-muted); font-size:0.85rem;"><i class="fas fa-info-circle me-1" style="color:var(--primary)"></i> Available exclusively for registered Python + AI course students.</p>
+  </div>
+</section>
+
+<!-- ======== FINAL CTA ======== -->
+<section class="final-cta">
+  <div class="container position-relative">
+    <div data-aos="fade-up">
+      <div class="section-label" style="background:rgba(255,255,255,0.1); color:rgba(255,255,255,0.9);">Start Today</div>
+      <h2 style="font-size:clamp(2rem,5vw,3.2rem); font-weight:900; color:white; margin:16px 0 12px; letter-spacing:-1px;">Ready to Start Your AI Journey?</h2>
+      <p style="color:rgba(255,255,255,0.75); font-size:1.1rem; margin-bottom:36px;">Join thousands of NRI students learning Future Technologies with Speed16 AI Academy.</p>
+      <div class="d-flex flex-wrap gap-3 justify-content-center">
+
+        <a href="https://chat.whatsapp.com/DwoXxY4hyRs4DPqVKjo7bg" target="_blank" class="btn-whatsapp">
+          <i class="fab fa-whatsapp"></i> Join WhatsApp Group
+        </a>
+
+        <a href="#lead-form" class="btn-primary-hero">
+          <i class="fas fa-play-circle"></i> Attend FREE Trial Class
+        </a>
+
+        <a href="https://wa.me/919764058654/?text=Hi" target="_blank" class="btn-whatsapp">
+          <i class="fab fa-whatsapp"></i> Whatsapp Now
+ 
+ </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ======== CONTACT SECTION ======== -->
+<section class="contact-section">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-lg-6" data-aos="fade-up">
+        <div class="text-center mb-4">
+          <div class="section-label">Contact</div>
+          <h2 class="section-title">Get in Touch</h2>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon" style="background:linear-gradient(135deg,#4f46e5,#7c3aed)"><i class="fas fa-user-tie"></i></div>
+          <div>
+            <div style="font-size:0.78rem; color:var(--text-muted); text-transform:uppercase; letter-spacing:0.5px;">Instructor</div>
+            <div style="font-weight:700;">Mr. Chaitanya Patil</div>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon" style="background:linear-gradient(135deg,#10b981,#059669)"><i class="fab fa-whatsapp"></i></div>
+          <div>
+            <div style="font-size:0.78rem; color:var(--text-muted); text-transform:uppercase; letter-spacing:0.5px;">WhatsApp</div>
+            <a href="https://wa.me/919764058654/?text=Hi" target="_blank" style="font-weight:700; color:var(--text-dark); text-decoration:none;">+91-97640-58654</a>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon" style="background:linear-gradient(135deg,#f59e0b,#d97706)"><i class="fas fa-envelope"></i></div>
+          <div>
+            <div style="font-size:0.78rem; color:var(--text-muted); text-transform:uppercase; letter-spacing:0.5px;">Email</div>
+            <a href="mailto:info@speed16.com" style="font-weight:700; color:var(--text-dark); text-decoration:none;">info@speed16.com</a>
+          </div>
+        </div>
+        <div class="contact-item" style="border:none;">
+          <div class="contact-icon" style="background:linear-gradient(135deg,#06b6d4,#0891b2)"><i class="fas fa-globe"></i></div>
+          <div>
+            <div style="font-size:0.78rem; color:var(--text-muted); text-transform:uppercase; letter-spacing:0.5px;">Website</div>
+            <a href="https://www.speed16.com" target="_blank" style="font-weight:700; color:var(--primary); text-decoration:none;">www.speed16.com</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ======== FOOTER ======== -->
+<footer>
+  <div class="container">
+    <div class="row g-4">
+      <div class="col-md-4">
+        <div class="footer-brand">Speed16 <span>AI Academy</span></div>
+        <p style="font-size:0.85rem; color:rgba(255,255,255,0.5); line-height:1.7; max-width:300px;">Live Online Python + AI Training for NRI students worldwide. Learn. Build. Grow.</p>
+        <div class="mt-3">
+          <a href="https://www.youtube.com/speed16academy" target="_blank" class="social-icon"><i class="fab fa-youtube"></i></a>
+          <a href="https://www.instagram.com/Speed16Academy" target="_blank" class="social-icon"><i class="fab fa-instagram"></i></a>
+          <a href="https://www.linkedin.com/company/speed16" target="_blank" class="social-icon"><i class="fab fa-linkedin-in"></i></a>
+          <a href="https://wa.me/919764058654/?text=Hi" target="_blank" class="social-icon"><i class="fab fa-whatsapp"></i></a>
+        </div>
+      </div>
+      <div class="col-md-2">
+        <h6 style="color:rgba(255,255,255,0.9); font-weight:700; margin-bottom:14px;">Quick Links</h6>
+        <a href="#about" class="footer-link">About</a>
+        <a href="#course" class="footer-link">Course</a>
+        <a href="#syllabus" class="footer-link">Syllabus</a>
+        <a href="#pricing" class="footer-link">Fees</a>
+        <a href="#faq" class="footer-link">FAQ</a>
+      </div>
+      <div class="col-md-3">
+        <h6 style="color:rgba(255,255,255,0.9); font-weight:700; margin-bottom:14px;">Courses</h6>
+        <a href="#" class="footer-link">Python + AI</a>
+        <a href="/training" target="_blank" class="footer-link">Java Programming</a>
+        <a href="/training" target="_blank"  class="footer-link">Robotics</a>
+        <a href="/training" target="_blank"  class="footer-link">AP CSP / AP CSA</a>
+        <a href="/training" target="_blank"  class="footer-link">Python + ML + Agentic AI</a>
+      </div>
+      <div class="col-md-3">
+        <h6 style="color:rgba(255,255,255,0.9); font-weight:700; margin-bottom:14px;">Serving Students In</h6>
+        <div style="color:rgba(255,255,255,0.6); font-size:0.85rem; line-height:2;">
+          USA<br>Canada<br>United Kingdom<br>Germany · France<br>India<br>Many more 
+        </div>
+      </div>
+    </div>
+    <div class="footer-divider"></div>
+    <div class="d-flex flex-wrap justify-content-between align-items-center gap-2">
+      <p style="font-size:0.82rem; color:rgba(255,255,255,0.4); margin:0;">© 2024 Speed16 AI Academy. All Rights Reserved.</p>
+      <div>
+        <a href="/policy" target="_blank" style="color:rgba(255,255,255,0.4); font-size:0.82rem; text-decoration:none; margin-left:16px;">Privacy Policy</a>
+        <a href="/policy#tnc" target="_blank" style="color:rgba(255,255,255,0.4); font-size:0.82rem; text-decoration:none; margin-left:16px;">Terms of Use</a>
+		<a href="/policy#refund" target="_blank" style="color:rgba(255,255,255,0.4); font-size:0.82rem; text-decoration:none; margin-left:16px;">Refund Policy</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- Scripts -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+<script>
+  // AOS init
+  AOS.init({ once: true, duration: 700, offset: 80 });
+
+  // FAQ accordion
+  function toggleFaq(btn) {
+    const item = btn.closest('.faq-item');
+    const answer = item.querySelector('.faq-answer');
+    const isOpen = item.classList.contains('active');
+
+    // Close all
+    document.querySelectorAll('.faq-item').forEach(i => {
+      i.classList.remove('active');
+      i.querySelector('.faq-answer').classList.remove('open');
+    });
+
+    if (!isOpen) {
+      item.classList.add('active');
+      answer.classList.add('open');
+    }
+  }
+
+  // Animated counter
+  function animateCounter(el) {
+    const target = parseInt(el.getAttribute('data-target'));
+    const duration = 1800;
+    const step = target / (duration / 16);
+    let current = 0;
+
+    const timer = setInterval(() => {
+      current += step;
+      if (current >= target) {
+        current = target;
+        clearInterval(timer);
+      }
+      el.textContent = Math.floor(current).toLocaleString();
+    }, 16);
+  }
+
+  // Intersection observer for counters
+  const counters = document.querySelectorAll('.counter');
+  const obs = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        animateCounter(e.target);
+        obs.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.5 });
+  counters.forEach(c => obs.observe(c));
+
+  // Form submission
+  function handleSubmit(e) {
+    e.preventDefault();
+    document.getElementById('registrationForm').style.display = 'none';
+    document.getElementById('successMsg').style.display = 'block';
+    window.scrollTo({ top: document.getElementById('successMsg').offsetTop - 100, behavior: 'smooth' });
+  }
+
+  // Smooth scroll for nav links
+  document.querySelectorAll('a[href^="#"]').forEach(a => {
+    a.addEventListener('click', e => {
+      const target = document.querySelector(a.getAttribute('href'));
+      if (target) {
+        e.preventDefault();
+        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    });
+  });  
+</script>
+
+<script>
+function sendLeadToWhatsApp() {
+
+    var studentName = document.getElementById("studentName").value;
+    var parentName  = document.getElementById("parentName").value;
+    var age         = document.getElementById("age").value;
+    var country     = document.getElementById("country").value;
+    var email       = document.getElementById("email").value;
+    var phone       = document.getElementById("phone").value;
+    var courses      = document.getElementById("courses").value;
+    var classTime   = document.getElementById("classTime").value;
+
+    var whatsappNumber = "919764058654";
+
+    var textMessage =
+        "*FREE Trial Class Registration*\n\n" +
+        "*Student Name:* " + studentName + "\n" +
+        "*Parent Name:* " + parentName + "\n" +
+        "*Student Age:* " + age + "\n" +
+        "*Country:* " + country + "\n" +
+        "*Email:* " + email + "\n" +
+        "*WhatsApp:* " + phone + "\n" +
+        "*Interested Course:* " + courses + "\n" +
+        "*Preferred Class Time:* " + classTime;
+
+    var whatsappURL =
+        "https://wa.me/" +
+        whatsappNumber +
+        "?text=" +
+        encodeURIComponent(textMessage);
+
+    // Redirect to WhatsApp
+    window.location.href = whatsappURL;
+
+    // Reset form (optional)
+    document.getElementById("leadForm").reset();
+}
+</script>
+
+
+</body>
+</html>
