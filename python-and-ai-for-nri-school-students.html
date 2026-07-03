@@ -952,6 +952,40 @@
     background: white;
   }
 
+  .course-dropdown { position: relative; }
+
+  .course-select-box {
+    cursor: pointer;
+    user-select: none;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+  }
+
+  .course-select-box::after {
+    content: "\f107";
+    font-family: "Font Awesome 6 Free";
+    font-weight: 900;
+    color: var(--primary);
+    flex-shrink: 0;
+  }
+
+  .course-dropdown-menu {
+    position: absolute;
+    top: calc(100% + 8px);
+    left: 0;
+    right: 0;
+    z-index: 20;
+    background: white;
+    border-radius: 12px;
+    border: 1.5px solid rgba(79,70,229,0.15);
+    box-shadow: 0 12px 32px rgba(79,70,229,0.15);
+    padding: 16px 18px;
+    max-height: 280px;
+    overflow-y: auto;
+  }
+
   .btn-submit {
     background: var(--gradient-cta);
     color: white;
@@ -2086,23 +2120,6 @@
         </div>
 
         <div class="col-md-6">
-            <label class="form-label">Country *</label>
-            <select class="form-select" id="country" required>
-                <option value="">Select Country</option>
-				<option>USA</option>
-                <option>Canada</option>
-                <option>UK</option>
-				<option>India</option>
-                <option>Germany</option>
-                <option>France</option>
-                <option>Netherlands</option>
-                <option>Australia</option>
-                <option>UAE</option>
-                <option>Others</option>
-            </select>
-        </div>
-
-        <div class="col-md-6">
             <label class="form-label">Email Address *</label>
             <input type="email" class="form-control" id="email"
                 placeholder="your@email.com" required>
@@ -2115,34 +2132,63 @@
         </div>
 
         <div class="col-md-6">
-            <label class="form-label">Interested Course</label>
-            <select class="form-select" id="courses">
-                <option>Python + AI (School/College Students)</option>
-                <option>Java Programming</option>
-                <option>Robotics</option>
-                <option>AP Computer Science (CSP)</option>
-                <option>AP Computer Science A (CSA)</option>
-                <option>Python + ML + Agentic AI</option>
-            </select>
-        </div>
+            <label class="form-label d-block">Interested Courses *</label>
+            <div class="course-dropdown">
+                <div class="form-control course-select-box text-muted" id="dropdownSelectBox">Select all that apply...</div>
+                <div class="course-dropdown-menu" id="dropdownMenuWrapper" style="display:none">
+                    <div class="form-check mb-2 text-start">
+                        <input class="form-check-input course-checkbox" type="checkbox" value="Python+AI (Age: 10 to 18)" id="course1">
+                        <label class="form-check-label" for="course1">Python+AI (Age: 10 to 18)</label>
+                    </div>
+                    <div class="form-check mb-2 text-start">
+                        <input class="form-check-input course-checkbox" type="checkbox" value="Java" id="course2">
+                        <label class="form-check-label" for="course2">Java</label>
+                    </div>
+                    <div class="form-check mb-2 text-start">
+                        <input class="form-check-input course-checkbox" type="checkbox" value="Robotics" id="course3">
+                        <label class="form-check-label" for="course3">Robotics</label>
+                    </div>
+                    <div class="form-check mb-2 text-start">
+                        <input class="form-check-input course-checkbox" type="checkbox" value="AP-CSP" id="course4">
+                        <label class="form-check-label" for="course4">AP-CSP</label>
+                    </div>
+                    <div class="form-check mb-2 text-start">
+                        <input class="form-check-input course-checkbox" type="checkbox" value="AP-CSA" id="course5">
+                        <label class="form-check-label" for="course5">AP-CSA</label>
+                    </div>
+                    <div class="form-check mb-2 text-start">
+                        <input class="form-check-input course-checkbox" type="checkbox" value="Vedic Maths (FREE)" id="course6">
+                        <label class="form-check-label" for="course6">Vedic Maths (FREE)</label>
+                    </div>
+                    <div class="form-check mb-2 text-start">
+                        <input class="form-check-input course-checkbox" type="checkbox" value="Rubik Cube (FREE)" id="course7">
+                        <label class="form-check-label" for="course7">Rubik Cube (FREE)</label>
+                    </div>
+                    <div class="form-check mb-2 text-start">
+                        <input class="form-check-input course-checkbox" type="checkbox" value="Indian History-Culture (FREE)" id="course8">
+                        <label class="form-check-label" for="course8">Indian History-Culture (FREE)</label>
+                    </div>
+                    <div class="form-check mb-2 text-start">
+                        <input class="form-check-input course-checkbox" type="checkbox" value="Python+ML+Agentic AI (Age: 18 to 60)" id="course9">
+                        <label class="form-check-label" for="course9">Python+ML+Agentic AI (Age: 18 to 60)</label>
+                    </div>
+                    <div class="form-check mb-2 text-start">
+                        <input class="form-check-input course-checkbox" type="checkbox" value="Other courses" id="course10">
+                        <label class="form-check-label" for="course10">Any other Maths or IT courses</label>
+                    </div>
+                </div>
+            </div>
+            <div id="courseError" style="display:none; color:#dc3545; font-size:0.8rem; margin-top:6px;">Please select at least one course.</div>
 
-        <div class="col-md-6">
-            <label class="form-label">Preferred Class Time</label>
-            <select class="form-select" id="classTime">
-                <option>Morning (6–9 AM local time)</option>
-                <option>Afternoon (12–3 PM local time)</option>
-                <option>Evening (5–8 PM local time)</option>
-                <option>Night (8–10 PM local time)</option>
-                <option>Weekend only</option>
-            </select>
         </div>
 
         <div class="col-12">
             <button type="submit" class="btn-submit">
                 <i class="fas fa-rocket"></i>
-                Book FREE Trial Class — No Payment Required
+                Book FREE Trial Class — No Payment Required (Use phone to submit)
             </button>
         </div>
+
 
     </div>
 </form>
@@ -2436,17 +2482,75 @@
   });
 </script>
 
+<!-- Course checkboxes stay hidden inside a dropdown box, opening only on click -->
 <script>
+  var selectBox = document.getElementById('dropdownSelectBox');
+  var menuWrapper = document.getElementById('dropdownMenuWrapper');
+  var courseCheckboxes = document.querySelectorAll('.course-checkbox');
+
+  // Toggle dropdown open/closed on click
+  selectBox.addEventListener('click', function (e) {
+    e.stopPropagation();
+    menuWrapper.style.display = menuWrapper.style.display === 'none' ? 'block' : 'none';
+  });
+
+  // Prevent dropdown closing when clicking inside the options list
+  menuWrapper.addEventListener('click', function (e) {
+    e.stopPropagation();
+  });
+
+  // Close dropdown if user clicks anywhere else on the page
+  document.addEventListener('click', function () {
+    menuWrapper.style.display = 'none';
+  });
+
+  // Show chosen courses in the box label text
+  courseCheckboxes.forEach(function (checkbox) {
+    checkbox.addEventListener('change', function () {
+      var checkedVals = Array.prototype.slice
+        .call(courseCheckboxes)
+        .filter(function (cb) { return cb.checked; })
+        .map(function (cb) { return cb.value; });
+
+      if (checkedVals.length > 0) {
+        selectBox.innerText = checkedVals.join(', ');
+        selectBox.classList.remove('text-muted');
+        selectBox.style.borderColor = '';
+        document.getElementById('courseError').style.display = 'none';
+      } else {
+        selectBox.innerText = 'Select all that apply...';
+        selectBox.classList.add('text-muted');
+      }
+    });
+  });
+</script>
+
+<script>
+
 function sendLeadToWhatsApp() {
 
     var studentName = document.getElementById("studentName").value;
     var parentName  = document.getElementById("parentName").value;
     var age         = document.getElementById("age").value;
-    var country     = document.getElementById("country").value;
     var email       = document.getElementById("email").value;
     var phone       = document.getElementById("phone").value;
-    var courses      = document.getElementById("courses").value;
-    var classTime   = document.getElementById("classTime").value;
+
+    var selectedCourses = Array.prototype.slice
+        .call(document.querySelectorAll(".course-checkbox:checked"))
+        .map(function (checkbox) { return checkbox.value; });
+
+    var courseErrorEl = document.getElementById("courseError");
+    var selectBoxEl2 = document.getElementById("dropdownSelectBox");
+    if (selectedCourses.length === 0) {
+        courseErrorEl.style.display = "block";
+        selectBoxEl2.style.borderColor = "#dc3545";
+        selectBoxEl2.scrollIntoView({ behavior: "smooth", block: "center" });
+        return;
+    }
+    courseErrorEl.style.display = "none";
+    selectBoxEl2.style.borderColor = "";
+
+    var courses = selectedCourses.join(", ");
 
     var whatsappNumber = "919764058654";
 
@@ -2455,11 +2559,9 @@ function sendLeadToWhatsApp() {
         "*Student Name:* " + studentName + "\n" +
         "*Parent Name:* " + parentName + "\n" +
         "*Student Age:* " + age + "\n" +
-        "*Country:* " + country + "\n" +
         "*Email:* " + email + "\n" +
         "*WhatsApp:* " + phone + "\n" +
-        "*Interested Course:* " + courses + "\n" +
-        "*Preferred Class Time:* " + classTime;
+        "*Interested Course(s):* " + courses;
 
     var whatsappURL =
         "https://wa.me/" +
@@ -2472,6 +2574,14 @@ function sendLeadToWhatsApp() {
 
     // Reset form (optional)
     document.getElementById("leadForm").reset();
+
+    // Reset the course dropdown display box back to its placeholder text,
+    // since form.reset() unchecks the boxes but doesn't touch our custom label
+    var selectBoxEl = document.getElementById("dropdownSelectBox");
+    if (selectBoxEl) {
+        selectBoxEl.innerText = "Select all that apply...";
+        selectBoxEl.classList.add("text-muted");
+    }
 }
 </script>
 
