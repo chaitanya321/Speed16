@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FREE 1-Week Training Programs | Speed16 AI Academy</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#0B1220;
+    --ink-2:#16213E;
+    --paper:#F5F7FB;
+    --panel:#FFFFFF;
+    --mint:#0EA672;
+    --mint-dim:#0EA67222;
+    --amber:#F59E0B;
+    --slate:#4B5768;
+    --slate-soft:#7C879A;
+    --line:#E4E9F1;
+    --code:#8BE9B8;
+  }
+
+  *{box-sizing:border-box; margin:0; padding:0;}
+
+  html{scroll-behavior:smooth;}
+
+  body{
+    background:var(--paper);
+    color:var(--slate);
+    font-family:'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    line-height:1.6;
+    padding-bottom:48px;
+  }
+
+  .mono{ font-family:'JetBrains Mono', monospace; }
+
+  /* ---------- HEADER ---------- */
+  header{
+    background:var(--ink);
+    color:#fff;
+    padding:22px 18px 26px;
+    position:relative;
+    overflow:hidden;
+  }
+  header::after{
+    content:"";
+    position:absolute;
+    inset:auto 0 0 0;
+    height:3px;
+    background:linear-gradient(90deg, var(--mint), var(--amber));
+  }
+  .brand-row{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    justify-content:center;
+    margin-bottom:4px;
+  }
+  .brand-mark{
+    width:34px; height:34px;
+    border-radius:8px;
+    background:linear-gradient(155deg, var(--mint), #0B4E39);
+    display:flex; align-items:center; justify-content:center;
+    font-family:'Space Grotesk', sans-serif;
+    font-weight:700;
+    font-size:1rem;
+    color:#fff;
+    flex:none;
+  }
+  .academy-title{
+    font-family:'Space Grotesk', sans-serif;
+    font-size:1.28rem;
+    font-weight:700;
+    letter-spacing:-0.01em;
+  }
+  .academy-title span{ color:var(--code); }
+  .academy-geo{
+    text-align:center;
+    font-family:'JetBrains Mono', monospace;
+    font-size:0.72rem;
+    color:#8CA0BE;
+    letter-spacing:1.5px;
+    text-transform:uppercase;
+    margin-bottom:18px;
+  }
+  .nav-links{
+    display:flex;
+    justify-content:center;
+    gap:10px;
+  }
+  .nav-btn{
+    display:inline-flex;
+    align-items:center;
+    gap:6px;
+    padding:9px 16px;
+    border-radius:8px;
+    text-decoration:none;
+    font-size:0.85rem;
+    font-weight:600;
+    transition:transform 0.15s ease, opacity 0.15s ease;
+  }
+  .nav-btn:hover{ transform:translateY(-1px); opacity:0.92; }
+  .btn-home{
+    background:rgba(255,255,255,0.06);
+    color:#fff;
+    border:1px solid rgba(255,255,255,0.22);
+  }
+  .btn-whatsapp{
+    background:var(--mint);
+    color:#04170F;
+  }
+
+  .container{
+    max-width:600px;
+    margin:0 auto;
+    padding:0 16px;
+  }
+
+  /* ---------- HERO TERMINAL ---------- */
+  .hero-wrap{ padding:28px 0 8px; }
+  .terminal{
+    background:var(--ink);
+    border-radius:12px;
+    overflow:hidden;
+    box-shadow:0 12px 30px -12px rgba(11,18,32,0.45);
+  }
+  .terminal-bar{
+    display:flex;
+    align-items:center;
+    gap:6px;
+    padding:11px 14px;
+    background:var(--ink-2);
+  }
+  .dot{ width:9px; height:9px; border-radius:50%; }
+  .dot.r{ background:#FF5F56; }
+  .dot.y{ background:#FFBD2E; }
+  .dot.g{ background:#27C93F; }
+  .terminal-title{
+    margin-left:10px;
+    font-family:'JetBrains Mono', monospace;
+    font-size:0.72rem;
+    color:#7A8AA6;
+  }
+  .terminal-body{
+    padding:20px 18px 22px;
+    font-family:'JetBrains Mono', monospace;
+    font-size:0.88rem;
+    color:#C4D3E8;
+    min-height:168px;
+  }
+  .terminal-body .line{ margin-bottom:9px; white-space:pre-wrap; }
+  .prompt{ color:var(--code); }
+  .cursor{
+    display:inline-block;
+    width:8px; height:1.05em;
+    background:var(--code);
+    vertical-align:text-bottom;
+    animation:blink 1s steps(1) infinite;
+  }
+  @keyframes blink{ 50%{ opacity:0; } }
+  .gift-line{
+    margin-top:14px;
+    padding-top:14px;
+    border-top:1px dashed #2C3B57;
+    display:flex;
+    align-items:baseline;
+    gap:10px;
+    flex-wrap:wrap;
+  }
+  .gift-line .tag{
+    font-family:'Space Grotesk', sans-serif;
+    font-weight:700;
+    font-size:1.18rem;
+    color:#fff;
+  }
+  .gift-line .sub{
+    font-size:0.78rem;
+    color:#8CA0BE;
+  }
+  @media (prefers-reduced-motion: reduce){
+    .cursor{ animation:none; }
+  }
+
+  /* ---------- SECTION LABELS ---------- */
+  .eyebrow{
+    font-family:'JetBrains Mono', monospace;
+    font-size:0.72rem;
+    color:var(--mint);
+    letter-spacing:1px;
+    margin:34px 0 8px;
+    display:flex;
+    align-items:center;
+    gap:8px;
+  }
+  .eyebrow::before{ content:"//"; color:var(--slate-soft); }
+  .section-title{
+    font-family:'Space Grotesk', sans-serif;
+    font-size:1.2rem;
+    font-weight:700;
+    color:var(--ink);
+    margin-bottom:14px;
+  }
+
+  /* ---------- PROGRAM DIRECTORY ---------- */
+  .dir-card{
+    background:var(--panel);
+    border:1px solid var(--line);
+    border-radius:12px;
+    padding:6px;
+    margin-bottom:8px;
+  }
+  .dir-root{
+    font-family:'JetBrains Mono', monospace;
+    font-size:0.8rem;
+    color:var(--slate-soft);
+    padding:10px 12px 4px;
+  }
+  .course-list{ list-style:none; }
+  .course-card{
+    display:flex;
+    align-items:center;
+    gap:11px;
+    padding:13px 12px;
+    border-radius:8px;
+    font-weight:600;
+    color:var(--ink);
+    font-size:0.96rem;
+  }
+  .course-card:hover{ background:var(--mint-dim); }
+  .course-branch{
+    font-family:'JetBrains Mono', monospace;
+    color:var(--slate-soft);
+    font-size:0.85rem;
+    flex:none;
+  }
+  .course-ext{
+    margin-left:auto;
+    font-family:'JetBrains Mono', monospace;
+    font-size:0.72rem;
+    color:var(--mint);
+    background:var(--mint-dim);
+    padding:2px 8px;
+    border-radius:100px;
+    flex:none;
+  }
+
+  /* ---------- STEPS AS COMMANDS ---------- */
+  .steps-container{
+    background:var(--panel);
+    border:1px solid var(--line);
+    border-radius:12px;
+    padding:6px;
+    margin-bottom:8px;
+  }
+  .step-block{
+    padding:16px 16px 18px;
+  }
+  .step-block + .step-block{
+    border-top:1px solid var(--line);
+  }
+  .step-num{
+    font-family:'JetBrains Mono', monospace;
+    font-size:0.82rem;
+    color:var(--mint);
+    margin-bottom:6px;
+  }
+  .step-num b{
+    font-family:'Space Grotesk', sans-serif;
+    color:var(--ink);
+    font-size:1rem;
+    margin-left:4px;
+  }
+  .step-desc{
+    font-size:0.94rem;
+    margin:6px 0 14px;
+    color:var(--slate);
+  }
+  .action-btn{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    width:100%;
+    padding:14px;
+    border-radius:9px;
+    text-decoration:none;
+    font-weight:700;
+    font-size:0.98rem;
+    text-align:center;
+    transition:transform 0.15s ease;
+  }
+  .action-btn:hover{ transform:translateY(-1px); }
+  .btn-link-wa{ background:#1FAA59; color:#fff; }
+  .btn-link-form{ background:var(--amber); color:#241300; }
+
+  /* ---------- CONTACT ---------- */
+  .contact-card{
+    background:var(--ink);
+    color:#fff;
+    padding:24px 20px;
+    border-radius:12px;
+    margin-bottom:8px;
+    position:relative;
+    overflow:hidden;
+  }
+  .contact-card::before{
+    content:"</>";
+    position:absolute;
+    right:16px; top:14px;
+    font-family:'JetBrains Mono', monospace;
+    color:rgba(255,255,255,0.06);
+    font-size:2.6rem;
+    font-weight:700;
+  }
+  .contact-card h3{
+    font-family:'Space Grotesk', sans-serif;
+    font-size:1.1rem;
+    margin-bottom:3px;
+  }
+  .title-sub{
+    font-family:'JetBrains Mono', monospace;
+    font-size:0.76rem;
+    color:#8CA0BE;
+    margin-bottom:16px;
+    border-bottom:1px solid #26344E;
+    padding-bottom:12px;
+  }
+  .contact-item{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    margin-bottom:11px;
+    font-size:0.93rem;
+  }
+  .contact-item .ico{
+    width:26px; height:26px;
+    border-radius:6px;
+    background:rgba(255,255,255,0.07);
+    display:flex; align-items:center; justify-content:center;
+    flex:none;
+    font-size:0.85rem;
+  }
+  .contact-item a{
+    color:#DCE6F5;
+    text-decoration:none;
+  }
+  .contact-item a:hover{ color:var(--code); }
+
+  /* ---------- SHARE ---------- */
+  .share-box{
+    background:var(--panel);
+    border:1px solid var(--line);
+    border-left:3px solid var(--mint);
+    padding:16px 18px;
+    border-radius:10px;
+    font-size:0.9rem;
+    color:var(--slate);
+  }
+  .share-box .comment{
+    font-family:'JetBrains Mono', monospace;
+    font-size:0.78rem;
+    color:var(--mint);
+    display:block;
+    margin-bottom:6px;
+  }
+
+  footer.foot-note{
+    text-align:center;
+    font-family:'JetBrains Mono', monospace;
+    font-size:0.72rem;
+    color:var(--slate-soft);
+    margin-top:26px;
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <br>
+  <div class="brand-row">
+    <div class="academy-title">Prof. Chaitanya Patil's <br><span>Speed16</span> AI Academy <br> <br>FREE 1-Week Training</div>
+  </div>
+    <div class="academy-geo">for NRI Students (Age: 12 to 18) <br> USA &middot; Canada &middot; Europe</div>
+  <br>
+  <div class="nav-links">
+    <a href="https://www.speed16.com/" target="_blank" class="nav-btn btn-home">Home Page</a>
+    <a href="https://wa.me/919764058654/?text=Hi" target="_blank" class="nav-btn btn-whatsapp">WhatsApp Us</a>
+  </div>
+    <br>
+</header>
+
+<div class="container">
+
+  <div class="hero-wrap">
+    <div class="terminal">
+      <div class="terminal-bar">
+        <div class="dot r"></div><div class="dot y"></div><div class="dot g"></div>
+        <div class="terminal-title">speed16-ai-academy — zsh</div>
+      </div>
+      <div class="terminal-body" id="termBody">
+        <div class="line"><span class="prompt">$</span> whoami</div>
+        <div class="line">student (age 12–18)</div>
+        <div class="line"><span class="prompt">$</span> check-access --week-1</div>
+        <div class="line">unlocked: python_ai, java and robotics</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="eyebrow">Tracks</div>
+  <h3 class="section-title">Available Programs</h3>
+  <div class="dir-card">
+    <div class="dir-root">📁 programs/</div>
+    <ul class="course-list">
+      <li class="course-card"><span class="course-branch">├─</span> Python + AI <span class="course-ext">.course</span></li>
+      <li class="course-card"><span class="course-branch">├─</span> Java Programming <span class="course-ext">.course</span></li>
+      <li class="course-card"><span class="course-branch">├─</span> Robotics <span class="course-ext">.course</span></li>
+      <li class="course-card"><span class="course-branch">└─</span> Python + AI (for IT Aspirants & Working Professionals)<span class="course-ext">.course</span></li>
+    </ul>
+  </div>
+
+  <div class="eyebrow">registration</div>
+  <h3 class="section-title">How to register</h3>
+  <div class="steps-container">
+    <div class="step-block">
+      <div class="step-num">$ step-1 <b>Join WhatsApp Community</b></div>
+      <div class="step-desc">Join the main community, then move into your course-specific group for real-time updates.</div>
+      <a href="https://chat.whatsapp.com/Ej9DYrph2dSK5k8DOhR3cO" class="action-btn btn-link-wa" target="_blank">Join WhatsApp Group</a>
+    </div>
+    <div class="step-block">
+      <div class="step-num">$ step-2 <b>Complete Registration Form</b></div>
+      <div class="step-desc">Submit your details to lock in your free access spot.</div>
+      <a href="https://forms.gle/C6joNKfGJ9iAEVY48" class="action-btn btn-link-form" target="_blank">Open Registration Form</a>
+    </div>
+  </div>
+
+  <div class="eyebrow">get in touch</div>
+  <div class="contact-card">
+    <h3>Prof. Chaitanya Patil</h3>
+    <div class="title-sub">BE, MTech, PhD* <br> Author · Trainer</div>
+    <div class="contact-item">
+      <span class="ico">&#9989;</span>
+      <a href="https://wa.me/919764058654/?text=Hi" target="_blank">+91-97640-58654 (WhatsApp)</a>
+    </div>
+    <div class="contact-item">
+      <span class="ico">&#9989;</span>
+      <a href="mailto:info@speed16.com">info@speed16.com</a>
+    </div>
+    <div class="contact-item">
+      <span class="ico">&#9989;</span>
+      <a href="https://www.speed16.com/" target="_blank">www.speed16.com</a>
+    </div>
+  </div>
+
+  <div class="share-box">
+    <span class="comment">// sharing is caring</span>
+    Please pass this page to friends, colleagues, neighbors, and NRI WhatsApp groups — your share could help a student find this opportunity.
+  </div>
+
+  <footer class="foot-note">© Speed16 AI Academy — Free Week 1 Access</footer>
+
+</div>
+
+<script>
+  // Respect reduced motion: cursor CSS animation already guarded.
+  // Add a lightweight blinking cursor at end of terminal body for realism.
+  (function(){
+    var body = document.getElementById('termBody');
+    var cursor = document.createElement('span');
+    cursor.className = 'cursor';
+    var lastLine = body.querySelector('.line:last-of-type') || body;
+    lastLine.appendChild(document.createTextNode(' '));
+    lastLine.appendChild(cursor);
+  })();
+</script>
+
+</body>
+</html>
